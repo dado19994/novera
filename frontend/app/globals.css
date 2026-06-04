@@ -1,26 +1,106 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #070d0a;
+  --s0: #0a120d;
+  --s1: #0c150f;
+  --s2: #101c15;
+  --s3: #15271d;
+  --ink: #e9f7ec;
+  --ink-2: #9cb6a6;
+  --ink-3: #65806f;
+  --hair: rgba(196, 255, 121, 0.085);
+  --hair-2: rgba(255, 255, 255, 0.05);
+  --em: #3ee089;
+  --em-deep: #1c9d61;
+  --lime: #c8ff61;
+  --glow: rgba(62, 224, 137, 0.45);
+  --cat-artists: #ff74b1;
+  --cat-venues: #39cfe6;
+  --cat-spaces: #39cfe6;
+  --cat-events: #ffb13c;
+  --cat-collectives: #a98cff;
+  --cat-rooms: #c8ff61;
+  --font-display: var(--font-bricolage-grotesque), "Bricolage Grotesque",
+    sans-serif;
+  --font-ui: var(--font-hanken-grotesk), "Hanken Grotesk", system-ui,
+    sans-serif;
+  --font-serif: var(--font-instrument-serif), "Instrument Serif", serif;
+  --font-mono: var(--font-space-mono), "Space Mono", monospace;
+  --background: var(--bg);
+  --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-ui);
+  --font-mono: var(--font-space-mono), "Space Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 12% -8%, rgba(62, 224, 137, 0.16), transparent 34rem),
+    radial-gradient(circle at 92% 4%, rgba(28, 157, 97, 0.12), transparent 38rem),
+    linear-gradient(180deg, #08110c 0%, var(--bg) 58%, #050807 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ui);
+  line-height: 1.5;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: rgba(200, 255, 97, 0.26);
+  color: #eafff0;
+}
+
+:focus-visible {
+  border-radius: 8px;
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background: rgba(62, 224, 137, 0.22);
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(62, 224, 137, 0.42);
+  background-clip: content-box;
 }

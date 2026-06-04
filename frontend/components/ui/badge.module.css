@@ -2,21 +2,36 @@
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid color-mix(in srgb, var(--badge-color, var(--em)) 28%, transparent);
   border-radius: 999px;
-  padding: 4px 9px;
-  color: #d8d1e4;
-  font-size: 0.76rem;
+  background: color-mix(in srgb, var(--badge-color, var(--em)) 9%, transparent);
+  padding: 4px 9px 5px;
+  color: var(--badge-color, var(--em));
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.06em;
   line-height: 1;
+  text-transform: uppercase;
 }
 
-.audio,
+.audio {
+  --badge-color: var(--cat-rooms);
+}
+
 .events,
-.spaces,
-.artists,
+.opportunities {
+  --badge-color: var(--cat-events);
+}
+
+.spaces {
+  --badge-color: var(--cat-spaces);
+}
+
+.artists {
+  --badge-color: var(--cat-artists);
+}
+
 .collectives,
-.opportunities,
 .match {
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  --badge-color: var(--cat-collectives);
 }

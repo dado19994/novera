@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Sidebar } from "./Sidebar";
 import { ShellHeader } from "./ShellHeader";
 import styles from "./appShell.module.css";
 
@@ -9,8 +10,11 @@ interface AppShellProps {
 export function AppShell({ children }: AppShellProps) {
   return (
     <div className={styles.shell}>
-      <ShellHeader />
-      <main className={styles.main}>{children}</main>
+      <Sidebar />
+      <div className={styles.content}>
+        <ShellHeader />
+        <main className={styles.main}>{children}</main>
+      </div>
     </div>
   );
 }

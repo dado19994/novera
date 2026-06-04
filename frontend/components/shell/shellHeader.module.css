@@ -1,16 +1,140 @@
 .header {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--hair);
+  background: rgba(7, 13, 10, 0.88);
+  padding: 15px 18px;
 }
 
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
+.context {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 14px;
+}
+
+.mobileBrand {
+  display: inline-flex;
+  align-items: center;
+  border-right: 1px solid var(--hair);
+  padding-right: 14px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
   letter-spacing: 0;
 }
 
-.subtitle {
-  margin-top: 4px;
-  color: #aaa4b5;
-  font-size: 0.9rem;
+.eyebrow {
+  color: var(--em);
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.16em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 3px;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.searchHint {
+  display: none;
+  min-width: 240px;
+  max-width: 440px;
+  flex: 1;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--hair);
+  border-radius: 12px;
+  background: var(--s1);
+  padding: 10px 13px;
+  color: var(--ink-3);
+}
+
+.searchHint span {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.searchHint strong {
+  overflow: hidden;
+  color: var(--ink-2);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.actions {
+  display: none;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionLink,
+.primaryAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  border-radius: 999px;
+  color: var(--ink-2);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.actionLink {
+  padding: 0 11px;
+}
+
+.actionLink:hover {
+  color: var(--ink);
+}
+
+.primaryAction {
+  border: 1px solid rgba(200, 255, 97, 0.24);
+  background: linear-gradient(135deg, var(--lime), var(--em));
+  box-shadow: 0 10px 24px rgba(62, 224, 137, 0.22);
+  padding: 0 15px;
+  color: #06140c;
+}
+
+.primaryAction:hover {
+  background: linear-gradient(135deg, #d8ff82, #54eca0);
+}
+
+@media (min-width: 640px) {
+  .actions {
+    display: flex;
+  }
+}
+
+@media (min-width: 920px) {
+  .header {
+    padding: 17px 30px;
+  }
+
+  .mobileBrand {
+    display: none;
+  }
+}
+
+@media (min-width: 1080px) {
+  .searchHint {
+    display: flex;
+  }
 }
