@@ -39,6 +39,16 @@ class User extends Authenticatable
         return $this->hasMany(OpenCall::class, 'creator_id');
     }
 
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    public function aiMatches(): HasMany
+    {
+        return $this->hasMany(AiMatch::class);
+    }
+
     /**
      * Get the attributes that should be cast.
      *

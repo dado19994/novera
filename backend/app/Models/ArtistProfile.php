@@ -47,4 +47,14 @@ class ArtistProfile extends Model
     {
         return $this->hasMany(LiveRoom::class);
     }
+
+    public function activities(): HasMany
+    {
+        return $this->hasMany(Activity::class);
+    }
+
+    public function aiMatches(): HasMany
+    {
+        return $this->hasMany(AiMatch::class);
+    }
 }
