@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ArtistProfile extends Model
 {
@@ -40,5 +41,10 @@ class ArtistProfile extends Model
     public function district(): BelongsTo
     {
         return $this->belongsTo(District::class);
+    }
+
+    public function liveRooms(): HasMany
+    {
+        return $this->hasMany(LiveRoom::class);
     }
 }

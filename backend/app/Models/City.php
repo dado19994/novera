@@ -21,4 +21,14 @@ class City extends Model
     {
         return $this->hasMany(Collective::class);
     }
+
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
+
+    public function liveRooms(): HasMany
+    {
+        return $this->hasMany(LiveRoom::class);
+    }
 }
