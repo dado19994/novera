@@ -55,4 +55,9 @@ class Collective extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    public function openCalls(): HasMany
+    {
+        return $this->hasMany(OpenCall::class);
+    }
 }

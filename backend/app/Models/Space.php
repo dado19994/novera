@@ -62,4 +62,9 @@ class Space extends Model
     {
         return $this->hasMany(LiveRoom::class);
     }
+
+    public function openCalls(): HasMany
+    {
+        return $this->hasMany(OpenCall::class);
+    }
 }

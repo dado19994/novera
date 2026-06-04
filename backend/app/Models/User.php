@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->hasMany(LiveRoom::class, 'host_id');
     }
 
+    public function openCalls(): HasMany
+    {
+        return $this->hasMany(OpenCall::class, 'creator_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *
