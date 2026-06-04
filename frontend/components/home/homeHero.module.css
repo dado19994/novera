@@ -1,0 +1,23 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kicker {
+  color: #aaa4b5;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.summary {
+  max-width: 620px;
+  color: #c7c0d3;
+}

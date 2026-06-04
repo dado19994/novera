@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import styles from "./home.module.css";
+import styles from "./homeSection.module.css";
 
 interface HomeSectionProps {
   title: string;

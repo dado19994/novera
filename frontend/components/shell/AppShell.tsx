@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ShellHeader } from "./ShellHeader";
-import styles from "./shell.module.css";
+import styles from "./appShell.module.css";
 
 interface AppShellProps {
   children: ReactNode;

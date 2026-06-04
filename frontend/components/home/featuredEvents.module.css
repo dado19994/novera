@@ -1,0 +1,23 @@
+.cardList {
+  display: grid;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.meta,
+.empty {
+  margin-top: 10px;
+  color: #aaa4b5;
+  font-size: 0.88rem;
+}

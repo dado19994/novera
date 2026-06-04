@@ -1,11 +1,12 @@
 import type { HomePayload } from "@/types/api";
 import { ActivityFeed } from "./ActivityFeed";
 import { FeaturedEvents } from "./FeaturedEvents";
+import { HomeHero } from "./HomeHero";
 import { HomeSection } from "./HomeSection";
 import { HomeStats } from "./HomeStats";
 import { LiveRooms } from "./LiveRooms";
 import { OpenCalls } from "./OpenCalls";
-import styles from "./home.module.css";
+import styles from "./homePage.module.css";
 
 interface HomePageProps {
   data: HomePayload;
@@ -14,13 +15,7 @@ interface HomePageProps {
 export function HomePage({ data }: HomePageProps) {
   return (
     <div className={styles.home}>
-      <header className={styles.hero}>
-        <p className={styles.kicker}>API data check</p>
-        <h1 className={styles.title}>{data.city.name}</h1>
-        <p className={styles.summary}>
-          Rendering live data from the Laravel home endpoint.
-        </p>
-      </header>
+      <HomeHero city={data.city} />
 
       <HomeSection title="Stats">
         <HomeStats stats={data.stats} />

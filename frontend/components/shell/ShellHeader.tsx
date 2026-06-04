@@ -1,4 +1,4 @@
-import styles from "./shell.module.css";
+import styles from "./shellHeader.module.css";
 
 export function ShellHeader() {
   return (

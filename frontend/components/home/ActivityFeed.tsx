@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import type { ActivitySummary } from "@/types/api";
-import styles from "./home.module.css";
+import styles from "./activityFeed.module.css";
 
 interface ActivityFeedProps {
   activities: ActivitySummary[];

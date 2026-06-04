@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import styles from "./ui.module.css";
+import styles from "./badge.module.css";
 
 interface BadgeProps {
   children: ReactNode;
@@ -7,8 +7,10 @@ interface BadgeProps {
 }
 
 export function Badge({ children, tone }: BadgeProps) {
+  const toneClass = tone && tone in styles ? styles[tone] : "";
+
   return (
-    <span className={[styles.badge, tone ? styles[tone] : ""].join(" ")}>
+    <span className={[styles.badge, toneClass].filter(Boolean).join(" ")}>
       {children}
     </span>
   );

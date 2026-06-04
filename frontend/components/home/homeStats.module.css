@@ -1,0 +1,16 @@
+.statsGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.statLabel {
+  color: #aaa4b5;
+  font-size: 0.84rem;
+}
+
+.statValue {
+  margin-top: 8px;
+  font-size: 2rem;
+  font-weight: 700;
+}
