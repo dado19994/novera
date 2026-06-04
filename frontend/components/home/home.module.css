@@ -1,0 +1,89 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.kicker {
+  color: #aaa4b5;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.summary {
+  max-width: 620px;
+  color: #c7c0d3;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 650;
+}
+
+.statsGrid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.statLabel {
+  color: #aaa4b5;
+  font-size: 0.84rem;
+}
+
+.statValue {
+  margin-top: 8px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.cardList,
+.feed {
+  display: grid;
+  gap: 12px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.bodyText {
+  margin-top: 10px;
+  color: #d6cfdf;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.meta,
+.empty {
+  margin-top: 10px;
+  color: #aaa4b5;
+  font-size: 0.88rem;
+}

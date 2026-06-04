@@ -1,0 +1,29 @@
+.card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.045);
+  padding: 18px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 4px 9px;
+  color: #d8d1e4;
+  font-size: 0.76rem;
+  line-height: 1;
+}
+
+.audio,
+.events,
+.spaces,
+.artists,
+.collectives,
+.opportunities,
+.match {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
