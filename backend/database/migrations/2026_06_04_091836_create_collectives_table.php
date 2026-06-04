@@ -11,34 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('spaces', function (Blueprint $table) {
+        Schema::create('collectives', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('city_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('district_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('owner_id')->nullable()->constrained('users')->nullOnDelete();
 
             $table->string('name');
-            $table->string('slug');
-            $table->string('type')->nullable();
+            $table->string('slug')->unique();
             $table->text('description')->nullable();
+            $table->string('discipline')->nullable();
             $table->string('image')->nullable();
+            $table->string('cover_image')->nullable();
 
-            $table->string('address')->nullable();
-            $table->decimal('latitude', 10, 7)->nullable();
-            $table->decimal('longitude', 10, 7)->nullable();
-
-            $table->string('status')->nullable();
-            $table->unsignedSmallInteger('capacity')->nullable();
-            $table->json('amenities')->nullable();
+            $table->unsignedSmallInteger('members_count')->default(0);
+            $table->string('recruiting_status')->nullable();
 
             $table->json('tags')->nullable();
+            $table->json('links')->nullable();
+
             $table->boolean('is_featured')->default(false);
             $table->boolean('is_active')->default(true);
 
             $table->timestamps();
-
-            $table->unique(['city_id', 'slug']);
         });
     }
 
@@ -47,6 +43,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('spaces');
+        Schema::dropIfExists('collectives');
     }
 };
