@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import type { ActivitySummary } from "@/types/api";
 import styles from "./activityRail.module.css";
 
 const fallbackActivity = [
@@ -25,7 +26,60 @@ const fallbackActivity = [
   ],
 ];
 
-export function ActivityRail() {
+const fallbackActivityImages = fallbackActivity.map((activity) => activity[2]);
+
+interface ActivityItem {
+  title: string;
+  meta: string;
+  image: string;
+}
+
+interface ActivityRailProps {
+  activities?: ActivitySummary[] | null;
+}
+
+function formatActivityTime(occurredAt?: string | null) {
+  if (!occurredAt) {
+    return "now";
+  }
+
+  const date = new Date(occurredAt);
+
+  if (Number.isNaN(date.getTime())) {
+    return "now";
+  }
+
+  const minutes = Math.max(1, Math.round((Date.now() - date.getTime()) / 60000));
+
+  if (minutes < 60) {
+    return `${minutes}m ago`;
+  }
+
+  const hours = Math.round(minutes / 60);
+
+  if (hours < 24) {
+    return `${hours}h ago`;
+  }
+
+  return `${Math.round(hours / 24)}d ago`;
+}
+
+function normalizeActivity(activity: ActivitySummary, index: number): ActivityItem {
+  const location = activity.district?.name ?? activity.city?.name ?? "Rome";
+
+  return {
+    title: activity.title,
+    meta: `${formatActivityTime(activity.occurred_at)} · ${location}`,
+    image: fallbackActivityImages[index % fallbackActivityImages.length],
+  };
+}
+
+export function ActivityRail({ activities }: ActivityRailProps) {
+  const visibleActivity =
+    activities && activities.length > 0
+      ? activities.slice(0, 4).map(normalizeActivity)
+      : fallbackActivity.map(([title, meta, image]) => ({ title, meta, image }));
+
   return (
     <section className={styles.panel}>
       <header className={styles.header}>
@@ -33,7 +87,7 @@ export function ActivityRail() {
         <span>VIEW ALL ACTIVITY</span>
       </header>
       <div className={styles.list}>
-        {fallbackActivity.map(([title, meta, image]) => (
+        {visibleActivity.map(({ title, meta, image }) => (
           <article className={styles.item} key={title}>
             <span className={styles.thumb}>
               <Image src={image} alt="" fill sizes="52px" />

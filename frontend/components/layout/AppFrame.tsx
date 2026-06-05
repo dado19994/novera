@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { MobileNavigation } from "./MobileNavigation";
 import { Sidebar } from "./Sidebar";
 import { Topbar } from "./Topbar";
 import styles from "./appFrame.module.css";
@@ -13,6 +14,7 @@ export function AppFrame({ children }: AppFrameProps) {
       <Sidebar />
       <div className={styles.workspace}>
         <Topbar />
+        <MobileNavigation />
         <main className={styles.main}>{children}</main>
       </div>
     </div>

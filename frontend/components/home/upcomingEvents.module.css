@@ -29,7 +29,7 @@
 }
 
 .header a {
-  color: rgba(244, 240, 255, 0.72);
+  color: rgba(244, 240, 255, 0.78);
   font-size: 0.68rem;
   text-decoration: none;
 }
@@ -90,7 +90,7 @@
 }
 
 .meta small {
-  color: rgba(244, 240, 255, 0.58);
+  color: rgba(244, 240, 255, 0.68);
   font-size: 0.66rem;
 }
 
@@ -121,4 +121,11 @@
   inset: 0;
   content: "";
   background: linear-gradient(135deg, rgba(255, 47, 146, 0.26), rgba(3, 3, 6, 0.2));
+}
+
+@media (max-width: 1023px) {
+  .panel {
+    min-height: 0;
+    border-right: 0;
+  }
 }

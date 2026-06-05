@@ -166,18 +166,8 @@
   font-size: 0.78rem;
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1023px) {
   .topbar {
-    grid-template-columns: 1fr;
-    height: auto;
-    padding: 14px;
-  }
-
-  .actions {
-    justify-content: space-between;
-  }
-
-  .profile {
     display: none;
   }
 }

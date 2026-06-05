@@ -28,10 +28,26 @@ export interface EventSummary {
   id: number;
   title: string;
   slug: string;
+  description?: string | null;
   type?: string | null;
+  image?: string | null;
+  cover_image?: string | null;
+  location_name?: string | null;
   status?: string | null;
   starts_at?: string | null;
   district?: BasicDistrict | null;
+}
+
+export interface ArtistSummary {
+  id: number;
+  display_name?: string | null;
+  name?: string | null;
+  slug: string;
+  discipline?: string | null;
+  avatar?: string | null;
+  image?: string | null;
+  district?: BasicDistrict | null;
+  city?: BasicCity | null;
 }
 
 export interface LiveRoomSummary {
@@ -83,6 +99,9 @@ export interface ActivitySummary {
   description?: string | null;
   tone?: string | null;
   occurred_at?: string | null;
+  district?: BasicDistrict | null;
+  city?: BasicCity | null;
+  artist_profile?: ArtistSummary | null;
 }
 
 export interface AiMatchSummary {
@@ -98,6 +117,8 @@ export interface HomePayload {
   city: BasicCity;
   districts: BasicDistrict[];
   stats: HomeStats;
+  artists?: ArtistSummary[];
+  featured_artists?: ArtistSummary[];
   featured_events: EventSummary[];
   live_rooms: LiveRoomSummary[];
   featured_spaces: SpaceSummary[];

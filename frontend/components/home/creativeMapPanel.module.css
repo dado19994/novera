@@ -1,4 +1,8 @@
 .panel {
+  --cat-artists: #20d9ff;
+  --cat-collectives: #ff2f92;
+  --cat-events: #ffb23f;
+  --cat-spaces: #8b5cff;
   position: relative;
   min-height: 540px;
   height: auto;
@@ -56,10 +60,10 @@
 .copy h2 {
   color: #f7f4ee;
   font-family: var(--font-display);
-  font-size: 3.35rem;
+  font-size: 2.55rem;
   font-weight: 400;
   letter-spacing: 0.01em;
-  line-height: 0.85;
+  line-height: 0.9;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.64);
 }
 
@@ -71,7 +75,7 @@
 }
 
 .copy span {
-  color: rgba(244, 240, 255, 0.74);
+  color: rgba(244, 240, 255, 0.8);
   font-size: 0.75rem;
   line-height: 1.38;
 }
@@ -88,7 +92,7 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  color: rgba(244, 240, 255, 0.78);
+  color: rgba(244, 240, 255, 0.84);
   font-size: 0.64rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -116,22 +120,27 @@
   width: 9px;
   height: 9px;
   border-radius: 999px;
+  box-shadow: 0 0 12px currentColor;
 }
 
 .venues {
-  background: var(--violet);
+  color: var(--cat-spaces);
+  background: var(--cat-spaces);
 }
 
 .artists {
-  background: var(--violet-soft);
+  color: var(--cat-artists);
+  background: var(--cat-artists);
 }
 
 .collectives {
-  background: var(--magenta);
+  color: var(--cat-collectives);
+  background: var(--cat-collectives);
 }
 
 .events {
-  background: #ff5d7a;
+  color: var(--cat-events);
+  background: var(--cat-events);
 }
 
 .locations {
@@ -176,13 +185,13 @@
 }
 
 .routes path {
-  stroke: rgba(255, 47, 146, 0.58);
+  stroke: color-mix(in srgb, var(--cat-collectives) 58%, transparent);
   stroke-width: 1.6;
   stroke-dasharray: 760;
   stroke-dashoffset: 760;
   animation: routeDraw 0.92s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   animation-delay: calc(0.22s + var(--route-index, 0) * 58ms);
-  filter: drop-shadow(0 0 5px rgba(255, 47, 146, 0.35));
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--cat-collectives) 34%, transparent));
 }
 
 .routes path:nth-child(1) {
@@ -222,11 +231,18 @@
 }
 
 .routes path:nth-child(2n) {
-  stroke: rgba(139, 92, 255, 0.58);
+  stroke: color-mix(in srgb, var(--cat-spaces) 62%, transparent);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--cat-spaces) 34%, transparent));
 }
 
 .routes path:nth-child(3n) {
-  stroke: rgba(255, 106, 139, 0.36);
+  stroke: color-mix(in srgb, var(--cat-events) 42%, transparent);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--cat-events) 28%, transparent));
+}
+
+.routes path:nth-child(5n) {
+  stroke: color-mix(in srgb, var(--cat-artists) 48%, transparent);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--cat-artists) 28%, transparent));
 }
 
 .pulse {
@@ -246,7 +262,7 @@
 .label {
   position: absolute;
   z-index: 3;
-  color: rgba(244, 240, 255, 0.78);
+  color: rgba(244, 240, 255, 0.84);
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 700;
@@ -289,15 +305,15 @@
 }
 
 .magenta {
-  color: rgba(244, 240, 255, 0.76);
+  color: rgba(244, 240, 255, 0.82);
 }
 
 .violet {
-  color: rgba(244, 240, 255, 0.68);
+  color: rgba(244, 240, 255, 0.78);
 }
 
 .amber {
-  color: rgba(244, 240, 255, 0.72);
+  color: rgba(244, 240, 255, 0.8);
 }
 
 .node {
@@ -324,7 +340,6 @@
   --node-index: 1;
   left: 37%;
   top: 34%;
-  background: var(--violet-soft);
 }
 
 .nodeB {
@@ -337,14 +352,32 @@
   --node-index: 3;
   left: 77%;
   top: 76%;
-  background: #ff7a65;
 }
 
 .nodeD {
   --node-index: 4;
   left: 30%;
   top: 86%;
-  background: var(--magenta);
+}
+
+.nodeSpaces {
+  background: var(--cat-spaces);
+  box-shadow: 0 0 18px var(--cat-spaces);
+}
+
+.nodeArtists {
+  background: var(--cat-artists);
+  box-shadow: 0 0 18px var(--cat-artists);
+}
+
+.nodeCollectives {
+  background: var(--cat-collectives);
+  box-shadow: 0 0 18px var(--cat-collectives);
+}
+
+.nodeEvents {
+  background: var(--cat-events);
+  box-shadow: 0 0 18px var(--cat-events);
 }
 
 .zoom {
@@ -378,6 +411,104 @@
 
 .zoom button:last-child {
   border-bottom: 0;
+}
+
+@media (max-width: 1023px) {
+  .panel {
+    min-height: 0;
+    border-right: 0;
+  }
+
+  .copy {
+    position: relative;
+    top: auto;
+    left: auto;
+    max-width: min(220px, calc(100% - 44px));
+    padding: 34px 0 0 22px;
+    gap: 7px;
+  }
+
+  .copy h2 {
+    font-size: 2.35rem;
+  }
+
+  .copy span {
+    max-width: 190px;
+  }
+
+  .legend {
+    gap: 6px;
+    margin: 6px 0 18px;
+  }
+
+  .map {
+    position: relative;
+    top: auto;
+    height: 360px;
+    margin-top: 8px;
+  }
+
+  .routes {
+    inset: 1% -22% 1% 12%;
+    width: 110%;
+    height: 98%;
+  }
+
+  .label {
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hot {
+    font-size: 0.76rem;
+  }
+
+  .pulse {
+    width: 118px;
+    height: 118px;
+  }
+
+  .zoom {
+    right: 22px;
+    bottom: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    min-height: 0;
+  }
+
+  .copy {
+    max-width: 190px;
+    padding-left: 20px;
+  }
+
+  .copy h2 {
+    font-size: 2.08rem;
+  }
+
+  .copy span {
+    font-size: 0.72rem;
+  }
+
+  .map {
+    height: 344px;
+  }
+
+  .routes {
+    inset: 3% -36% 1% -4%;
+    width: 138%;
+  }
+
+  .label {
+    font-size: 0.58rem;
+  }
+
+  .zoom {
+    right: 18px;
+    bottom: 18px;
+  }
 }
 
 @keyframes routeDraw {
@@ -445,6 +576,6 @@
 
   100% {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
   }
 }

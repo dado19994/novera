@@ -4,30 +4,37 @@ import { CollectiveStory } from "./CollectiveStory";
 import { CreativeMapPanel } from "./CreativeMapPanel";
 import { FeaturedArtists } from "./FeaturedArtists";
 import { HeroPanel } from "./HeroPanel";
+import { SceneStories } from "./SceneStories";
 import { UpcomingEvents } from "./UpcomingEvents";
 import styles from "./homePage.module.css";
 
 interface HomePageProps {
-  data: HomePayload;
+  data: HomePayload | null;
 }
 
 export function HomePage({ data }: HomePageProps) {
+  const featuredEvents = data?.featured_events ?? [];
+  const activities = data?.activities ?? [];
+  const featuredArtists = data?.featured_artists ?? data?.artists ?? [];
+
   return (
     <div
       className={styles.page}
-      data-api-events={data.featured_events.length}
-      data-api-activities={data.activities.length}
+      data-api-events={featuredEvents.length}
+      data-api-activities={activities.length}
     >
       <section className={styles.topBand} aria-label="Novera creative overview">
         <HeroPanel />
         <CreativeMapPanel cityName="Rome" />
       </section>
 
+      <SceneStories />
+
       <section className={styles.lowerGrid} aria-label="Novera dashboard">
-        <FeaturedArtists />
+        <FeaturedArtists artists={featuredArtists} />
         <CollectiveStory />
-        <UpcomingEvents />
-        <ActivityRail />
+        <UpcomingEvents events={featuredEvents} />
+        <ActivityRail activities={activities} />
       </section>
     </div>
   );

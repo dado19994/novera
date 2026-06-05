@@ -63,11 +63,11 @@ export function CreativeMapPanel({ cityName }: CreativeMapPanelProps) {
             {label.name}
           </span>
         ))}
-        <span className={`${styles.node} ${styles.nodeLarge}`} />
-        <span className={`${styles.node} ${styles.nodeA}`} />
-        <span className={`${styles.node} ${styles.nodeB}`} />
-        <span className={`${styles.node} ${styles.nodeC}`} />
-        <span className={`${styles.node} ${styles.nodeD}`} />
+        <span className={`${styles.node} ${styles.nodeLarge} ${styles.nodeCollectives}`} />
+        <span className={`${styles.node} ${styles.nodeA} ${styles.nodeSpaces}`} />
+        <span className={`${styles.node} ${styles.nodeB} ${styles.nodeCollectives}`} />
+        <span className={`${styles.node} ${styles.nodeC} ${styles.nodeEvents}`} />
+        <span className={`${styles.node} ${styles.nodeD} ${styles.nodeArtists}`} />
       </div>
 
       <div className={styles.zoom} aria-hidden="true">

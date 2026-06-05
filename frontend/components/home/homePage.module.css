@@ -52,6 +52,25 @@
   }
 }
 
+@media (max-width: 1023px) {
+  .page {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .topBand,
+  .lowerGrid {
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+  }
+
+  .lowerGrid {
+    overflow: hidden;
+  }
+}
+
 @keyframes lowerSignalIn {
   from {
     opacity: 0;

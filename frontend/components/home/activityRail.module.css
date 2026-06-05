@@ -30,7 +30,7 @@
 }
 
 .header span {
-  color: rgba(244, 240, 255, 0.72);
+  color: rgba(244, 240, 255, 0.78);
   font-size: 0.68rem;
 }
 
@@ -95,7 +95,7 @@
 }
 
 .item small {
-  color: rgba(244, 240, 255, 0.58);
+  color: rgba(244, 240, 255, 0.68);
   font-size: 0.72rem;
 }
 
@@ -122,4 +122,10 @@
 .link:hover svg,
 .link:focus-visible svg {
   transform: translateX(3px);
+}
+
+@media (max-width: 1023px) {
+  .panel {
+    min-height: 0;
+  }
 }
