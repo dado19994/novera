@@ -1,0 +1,450 @@
+.panel {
+  position: relative;
+  min-height: 540px;
+  height: auto;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 47, 146, 0.22);
+  background:
+    radial-gradient(circle at 62% 48%, rgba(255, 15, 123, 0.36), transparent 15rem),
+    radial-gradient(circle at 76% 22%, rgba(139, 92, 255, 0.22), transparent 18rem),
+    #030306;
+}
+
+.panel::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    repeating-linear-gradient(7deg, transparent 0 20px, rgba(255, 47, 146, 0.08) 21px, transparent 23px),
+    repeating-linear-gradient(88deg, transparent 0 30px, rgba(255, 255, 255, 0.035) 31px, transparent 33px),
+    repeating-linear-gradient(133deg, transparent 0 46px, rgba(139, 92, 255, 0.07) 47px, transparent 50px),
+    linear-gradient(rgba(255, 47, 146, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 47, 146, 0.04) 1px, transparent 1px);
+  background-size: auto, auto, auto, 28px 28px, 28px 28px;
+  opacity: 0.8;
+  animation: signalGridIn 0.58s var(--signal-ease, cubic-bezier(0.2, 0.8, 0.2, 1)) both;
+}
+
+.panel::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    radial-gradient(circle at 56% 51%, rgba(255, 15, 123, 0.58), transparent 5.5rem),
+    radial-gradient(circle at 56% 51%, rgba(255, 47, 146, 0.18), transparent 19rem),
+    linear-gradient(90deg, rgba(3, 3, 6, 0.05), rgba(3, 3, 6, 0.38));
+}
+
+.copy {
+  position: absolute;
+  z-index: 4;
+  top: 38px;
+  left: 43px;
+  display: grid;
+  max-width: 196px;
+  gap: 8px;
+}
+
+.copy p {
+  color: var(--magenta);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.copy h2 {
+  color: #f7f4ee;
+  font-family: var(--font-display);
+  font-size: 3.35rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 0.85;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.64);
+}
+
+.copy strong {
+  margin-top: 4px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.copy span {
+  color: rgba(244, 240, 255, 0.74);
+  font-size: 0.75rem;
+  line-height: 1.38;
+}
+
+.legend {
+  display: grid;
+  gap: 8px;
+  margin: 6px 0 20px;
+  list-style: none;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  color: rgba(244, 240, 255, 0.78);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: legendItemIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(0.72s + var(--legend-index, 0) * 70ms);
+}
+
+.legend li:nth-child(1) {
+  --legend-index: 0;
+}
+
+.legend li:nth-child(2) {
+  --legend-index: 1;
+}
+
+.legend li:nth-child(3) {
+  --legend-index: 2;
+}
+
+.legend li:nth-child(4) {
+  --legend-index: 3;
+}
+
+.legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+}
+
+.venues {
+  background: var(--violet);
+}
+
+.artists {
+  background: var(--violet-soft);
+}
+
+.collectives {
+  background: var(--magenta);
+}
+
+.events {
+  background: #ff5d7a;
+}
+
+.locations {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--magenta);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.locations svg {
+  transition: transform 160ms ease;
+}
+
+.locations:hover,
+.locations:focus-visible {
+  color: #ff72b7;
+}
+
+.locations:hover svg,
+.locations:focus-visible svg {
+  transform: translateX(3px);
+}
+
+.map {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.routes {
+  position: absolute;
+  inset: 1% 1% 1% 20%;
+  width: 82%;
+  height: 98%;
+  fill: none;
+}
+
+.routes path {
+  stroke: rgba(255, 47, 146, 0.58);
+  stroke-width: 1.6;
+  stroke-dasharray: 760;
+  stroke-dashoffset: 760;
+  animation: routeDraw 0.92s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation-delay: calc(0.22s + var(--route-index, 0) * 58ms);
+  filter: drop-shadow(0 0 5px rgba(255, 47, 146, 0.35));
+}
+
+.routes path:nth-child(1) {
+  --route-index: 0;
+}
+
+.routes path:nth-child(2) {
+  --route-index: 1;
+}
+
+.routes path:nth-child(3) {
+  --route-index: 2;
+}
+
+.routes path:nth-child(4) {
+  --route-index: 3;
+}
+
+.routes path:nth-child(5) {
+  --route-index: 4;
+}
+
+.routes path:nth-child(6) {
+  --route-index: 5;
+}
+
+.routes path:nth-child(7) {
+  --route-index: 6;
+}
+
+.routes path:nth-child(8) {
+  --route-index: 7;
+}
+
+.routes path:nth-child(9) {
+  --route-index: 8;
+}
+
+.routes path:nth-child(2n) {
+  stroke: rgba(139, 92, 255, 0.58);
+}
+
+.routes path:nth-child(3n) {
+  stroke: rgba(255, 106, 139, 0.36);
+}
+
+.pulse {
+  position: absolute;
+  left: 56%;
+  top: 50%;
+  width: 138px;
+  height: 138px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 15, 123, 0.86) 0 9%, rgba(255, 47, 146, 0.34) 10% 34%, transparent 68%);
+  transform: translate(-50%, -50%);
+  filter: blur(2px);
+  animation: centralSignalPulse 0.82s 0.72s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.label {
+  position: absolute;
+  z-index: 3;
+  color: rgba(244, 240, 255, 0.78);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  transform: translate(-50%, -50%);
+  animation: signalLabelIn 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(0.68s + var(--label-index, 0) * 70ms);
+}
+
+.label:nth-of-type(1) {
+  --label-index: 0;
+}
+
+.label:nth-of-type(2) {
+  --label-index: 1;
+}
+
+.label:nth-of-type(3) {
+  --label-index: 2;
+}
+
+.label:nth-of-type(4) {
+  --label-index: 3;
+}
+
+.label:nth-of-type(5) {
+  --label-index: 4;
+}
+
+.label:nth-of-type(6) {
+  --label-index: 5;
+}
+
+.hot {
+  color: #f7f4ee;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-shadow: 0 0 18px var(--magenta-hot);
+}
+
+.magenta {
+  color: rgba(244, 240, 255, 0.76);
+}
+
+.violet {
+  color: rgba(244, 240, 255, 0.68);
+}
+
+.amber {
+  color: rgba(244, 240, 255, 0.72);
+}
+
+.node {
+  position: absolute;
+  z-index: 3;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--magenta-hot);
+  box-shadow: 0 0 18px var(--magenta-hot);
+  animation: signalNodeIn 0.34s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: calc(0.55s + var(--node-index, 0) * 58ms);
+}
+
+.nodeLarge {
+  --node-index: 0;
+  left: 56%;
+  top: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+.nodeA {
+  --node-index: 1;
+  left: 37%;
+  top: 34%;
+  background: var(--violet-soft);
+}
+
+.nodeB {
+  --node-index: 2;
+  left: 82%;
+  top: 33%;
+}
+
+.nodeC {
+  --node-index: 3;
+  left: 77%;
+  top: 76%;
+  background: #ff7a65;
+}
+
+.nodeD {
+  --node-index: 4;
+  left: 30%;
+  top: 86%;
+  background: var(--magenta);
+}
+
+.zoom {
+  position: absolute;
+  right: 28px;
+  bottom: 22px;
+  z-index: 5;
+  display: grid;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 2px;
+}
+
+.zoom button {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(3, 3, 6, 0.72);
+  color: var(--text);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.zoom button:hover,
+.zoom button:focus-visible {
+  background: rgba(255, 47, 146, 0.14);
+  color: #fff;
+}
+
+.zoom button:last-child {
+  border-bottom: 0;
+}
+
+@keyframes routeDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes signalGridIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.8;
+  }
+}
+
+@keyframes signalLabelIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 8px));
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes legendItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes signalNodeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.62);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes centralSignalPulse {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+  }
+
+  48% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}

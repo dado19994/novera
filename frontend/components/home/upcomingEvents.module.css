@@ -1,0 +1,124 @@
+.panel {
+  display: grid;
+  min-height: 404px;
+  height: auto;
+  grid-template-rows: auto 1fr;
+  overflow: visible;
+  border-top: 1px solid rgba(255, 47, 146, 0.22);
+  border-right: 1px solid rgba(255, 47, 146, 0.22);
+  background: #030306;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  min-height: 58px;
+  padding: 20px 18px 13px;
+}
+
+.header h2,
+.header a {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.header h2 {
+  color: var(--magenta);
+  font-size: 0.7rem;
+}
+
+.header a {
+  color: rgba(244, 240, 255, 0.72);
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+
+.list {
+  display: grid;
+  padding: 0 16px 15px;
+}
+
+.event {
+  display: grid;
+  grid-template-columns: 48px 1fr 58px;
+  gap: 10px;
+  align-items: center;
+  min-height: 82px;
+  border-top: 1px solid rgba(255, 47, 146, 0.3);
+  transition: border-color 160ms ease, background-color 160ms ease;
+}
+
+.event:hover {
+  border-color: rgba(255, 47, 146, 0.48);
+  background: rgba(255, 47, 146, 0.035);
+}
+
+.date {
+  display: grid;
+  min-height: 58px;
+  place-items: center;
+  border: 1px solid rgba(255, 47, 146, 0.26);
+  color: var(--magenta);
+}
+
+.date span {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.date strong {
+  font-family: var(--font-display);
+  font-size: 2.1rem;
+  font-weight: 400;
+  line-height: 0.9;
+}
+
+.meta {
+  display: grid;
+  gap: 1px;
+}
+
+.meta strong {
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.meta small {
+  color: rgba(244, 240, 255, 0.58);
+  font-size: 0.66rem;
+}
+
+.thumb {
+  position: relative;
+  display: block;
+  width: 56px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: var(--surface);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.86) contrast(1.15) brightness(0.7);
+  transition: filter 160ms ease;
+}
+
+.event:hover .thumb img {
+  filter: saturate(0.92) contrast(1.16) brightness(0.78);
+}
+
+.thumb::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(135deg, rgba(255, 47, 146, 0.26), rgba(3, 3, 6, 0.2));
+}

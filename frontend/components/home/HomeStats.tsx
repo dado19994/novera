@@ -1,4 +1,3 @@
-import { Card } from "@/components/ui/Card";
 import type { HomeStats as HomeStatsType } from "@/types/api";
 import styles from "./homeStats.module.css";
 
@@ -15,14 +14,14 @@ const labels: Record<keyof HomeStatsType, string> = {
 
 export function HomeStats({ stats }: HomeStatsProps) {
   return (
-    <dl className={styles.statsGrid}>
+    <dl className={styles.statsStrip} aria-label="Novera city stats">
       {Object.entries(stats).map(([key, value]) => (
-        <Card key={key}>
+        <div className={styles.statItem} key={key}>
           <dt className={styles.statLabel}>
             {labels[key as keyof HomeStatsType]}
           </dt>
           <dd className={styles.statValue}>{value}</dd>
-        </Card>
+        </div>
       ))}
     </dl>
   );

@@ -1,0 +1,175 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.eyebrow {
+  color: var(--rose);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.sectionHeader h2 {
+  margin-top: 5px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.sectionHeader span {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.featuredGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.primaryCard,
+.compactCard {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 24px 60px -46px rgba(0, 0, 0, 0.9);
+}
+
+.primaryCard {
+  display: grid;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.imageField {
+  min-height: 260px;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(255, 61, 139, 0.24), transparent 34%),
+    radial-gradient(circle at 18% 88%, rgba(139, 92, 255, 0.22), transparent 42%),
+    linear-gradient(135deg, var(--surface-2), var(--bg));
+  padding: 18px;
+}
+
+.imageField span {
+  display: inline-flex;
+  border: 1px solid rgba(245, 165, 36, 0.38);
+  border-radius: 999px;
+  background: rgba(245, 165, 36, 0.1);
+  padding: 5px 10px;
+  color: var(--amber);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.primaryCopy {
+  padding: 20px;
+}
+
+.primaryCopy h3 {
+  margin-top: 14px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.primaryCopy p {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.primaryCopy small {
+  display: block;
+  margin-top: 16px;
+  color: var(--rose);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.compactList {
+  display: grid;
+  gap: 10px;
+}
+
+.compactCard {
+  display: grid;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  padding: 14px;
+}
+
+.marker {
+  width: 8px;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(var(--rose), var(--violet));
+}
+
+.compactCard h3 {
+  overflow: hidden;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compactCard p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+@media (min-width: 760px) {
+  .featuredGrid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+  }
+
+  .primaryCard {
+    grid-template-rows: minmax(260px, 1fr) auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .sectionHeader {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .compactCard {
+    align-items: start;
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .compactCard > span:not(.marker) {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

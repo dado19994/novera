@@ -1,0 +1,236 @@
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 20;
+  display: flex;
+  width: 220px;
+  height: 100vh;
+  flex-direction: column;
+  border-right: 1px solid rgba(255, 255, 255, 0.09);
+  background: #030306;
+  overflow: hidden;
+}
+
+.sidebarNavs {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-color: rgba(255, 47, 146, 0.32) transparent;
+  scrollbar-width: thin;
+}
+
+.sidebarNavs::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebarNavs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebarNavs::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 47, 146, 0.26);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 78px;
+  padding: 0 24px;
+  text-decoration: none;
+}
+
+.brandMark {
+  color: transparent;
+  font-size: 0;
+}
+
+.brandMark::before {
+  display: block;
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--magenta-hot), #ff6c9b 45%, var(--violet));
+  clip-path: polygon(0 0, 23% 0, 78% 66%, 78% 0, 100% 0, 100% 100%, 77% 100%, 22% 34%, 22% 100%, 0 100%);
+  content: "";
+}
+
+.wordmark {
+  color: #f7f4ee;
+  font-family: var(--font-ui);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+}
+
+.nav {
+  display: grid;
+  gap: 4px;
+  padding: 18px 24px 0;
+}
+
+.secondary {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navItem {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  align-items: center;
+  min-height: 51px;
+  gap: 16px;
+  color: rgba(244, 240, 255, 0.72);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.045em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.navItem:hover {
+  background: rgba(255, 47, 146, 0.07);
+  color: #f7f4ee;
+}
+
+.active {
+  margin: 0 -24px;
+  min-height: 54px;
+  padding: 0 24px;
+  background: linear-gradient(90deg, rgba(255, 47, 146, 0.3), rgba(255, 47, 146, 0.1) 54%, transparent);
+  color: #f7f4ee;
+}
+
+.active::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--magenta);
+  box-shadow: 0 0 18px rgba(255, 47, 146, 0.75);
+  content: "";
+}
+
+.active::after {
+  position: absolute;
+  right: 24px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--magenta);
+  box-shadow: 0 0 16px rgba(255, 47, 146, 0.75);
+  content: "";
+  animation: activeSignalPulse 2.6s ease-in-out infinite;
+}
+
+.navIcon {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  color: currentColor;
+}
+
+.badge {
+  display: grid;
+  min-width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--magenta-hot);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.sidebarBottom {
+  display: grid;
+  gap: 18px;
+  flex-shrink: 0;
+  padding: 20px 20px 24px;
+}
+
+.proCard {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(255, 47, 146, 0.35);
+  border-radius: 4px;
+  background:
+    linear-gradient(180deg, rgba(255, 47, 146, 0.1), rgba(139, 92, 255, 0.08)),
+    #050507;
+}
+
+.proCard h2 {
+  color: var(--magenta);
+  font-family: var(--font-display);
+  font-size: 1.36rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.proCard p {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.42;
+}
+
+.proCard a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid var(--magenta);
+  color: var(--magenta);
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+}
+
+.teamsCard {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: center;
+  color: rgba(244, 240, 255, 0.72);
+}
+
+.teamsCard h2 {
+  color: rgba(244, 240, 255, 0.82);
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.teamsCard p {
+  color: var(--muted);
+  font-size: 0.62rem;
+}
+
+@media (max-width: 980px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@keyframes activeSignalPulse {
+  0%,
+  100% {
+    opacity: 0.72;
+    box-shadow: 0 0 10px rgba(255, 47, 146, 0.48);
+  }
+
+  45% {
+    opacity: 1;
+    box-shadow: 0 0 18px rgba(255, 47, 146, 0.76);
+  }
+}

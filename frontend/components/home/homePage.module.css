@@ -1,5 +1,65 @@
-.home {
+.page {
   display: flex;
+  width: 100%;
+  min-width: 0;
   flex-direction: column;
-  gap: 26px;
+  overflow: visible;
+}
+
+.topBand {
+  display: grid;
+  grid-template-columns: minmax(0, 560fr) minmax(0, 692fr);
+  min-height: 540px;
+  height: auto;
+  gap: 0;
+  align-items: stretch;
+}
+
+.lowerGrid {
+  display: grid;
+  grid-template-columns: 284fr 432fr 268fr 268fr;
+  min-height: 404px;
+  height: auto;
+  gap: 0;
+  align-items: stretch;
+  overflow: visible;
+}
+
+.lowerGrid > * {
+  animation: lowerSignalIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.lowerGrid > *:nth-child(1) {
+  animation-delay: 0.72s;
+}
+
+.lowerGrid > *:nth-child(2) {
+  animation-delay: 0.81s;
+}
+
+.lowerGrid > *:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.lowerGrid > *:nth-child(4) {
+  animation-delay: 0.99s;
+}
+
+@media (max-width: 1280px) {
+  .topBand,
+  .lowerGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@keyframes lowerSignalIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }

@@ -1,0 +1,216 @@
+.panel {
+  display: flex;
+  min-height: 460px;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 70% 30%, rgba(139, 92, 255, 0.18), transparent 15rem),
+    radial-gradient(circle at 42% 68%, rgba(255, 61, 139, 0.14), transparent 14rem),
+    var(--surface);
+  padding: 22px;
+}
+
+.header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.header p {
+  color: var(--rose);
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  margin-top: 6px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.header a {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.mapStage {
+  position: relative;
+  flex: 1;
+  min-height: 320px;
+  margin-top: 18px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(139, 92, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 255, 0.04) 1px, transparent 1px),
+    #080912;
+  background-size: 34px 34px;
+}
+
+.topology {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.topology path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 0.7;
+}
+
+.topology .routeRose,
+.topology .routeViolet,
+.topology .routeAmber {
+  stroke-width: 1.4;
+}
+
+.routeRose {
+  stroke: rgba(255, 61, 139, 0.68) !important;
+}
+
+.routeViolet {
+  stroke: rgba(139, 92, 255, 0.7) !important;
+}
+
+.routeAmber {
+  stroke: rgba(245, 165, 36, 0.7) !important;
+}
+
+.nodeWrap {
+  --node-color: var(--rose);
+  position: absolute;
+}
+
+.node {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--node-color);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--node-color) 70%, transparent);
+  transform: translate(-50%, -50%);
+}
+
+.label {
+  position: absolute;
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--node-color) 38%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--node-color) 16%, #080912);
+  padding: 0 10px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.artists {
+  --node-color: var(--rose);
+}
+
+.events {
+  --node-color: var(--amber);
+}
+
+.audio {
+  --node-color: var(--teal);
+}
+
+.spaces {
+  --node-color: var(--blue);
+}
+
+.collectives {
+  --node-color: var(--violet);
+}
+
+.signalCard {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: min(220px, calc(100% - 32px));
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(13, 14, 24, 0.92);
+  padding: 14px;
+}
+
+.signalCard p {
+  color: var(--faint);
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.signalCard strong {
+  display: block;
+  margin-top: 8px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.04rem;
+  font-weight: 800;
+}
+
+.signalCard span {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.72rem;
+}
+
+.legend span::before {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  content: "";
+}
+
+.legendArtists::before {
+  background: var(--rose);
+}
+
+.legendEvents::before {
+  background: var(--amber);
+}
+
+.legendAudio::before {
+  background: var(--teal);
+}
+
+.legendSpaces::before {
+  background: var(--blue);
+}

@@ -15,16 +15,16 @@
 }
 
 .audio {
-  --badge-color: var(--cat-rooms);
+  --badge-color: var(--teal);
 }
 
 .events,
 .opportunities {
-  --badge-color: var(--cat-events);
+  --badge-color: var(--amber);
 }
 
 .spaces {
-  --badge-color: var(--cat-spaces);
+  --badge-color: var(--blue);
 }
 
 .artists {
@@ -33,5 +33,5 @@
 
 .collectives,
 .match {
-  --badge-color: var(--cat-collectives);
+  --badge-color: var(--violet);
 }

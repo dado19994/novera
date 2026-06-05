@@ -1,11 +1,10 @@
 import type { HomePayload } from "@/types/api";
-import { ActivityFeed } from "./ActivityFeed";
-import { FeaturedEvents } from "./FeaturedEvents";
-import { HomeHero } from "./HomeHero";
-import { HomeSection } from "./HomeSection";
-import { HomeStats } from "./HomeStats";
-import { LiveRooms } from "./LiveRooms";
-import { OpenCalls } from "./OpenCalls";
+import { ActivityRail } from "./ActivityRail";
+import { CollectiveStory } from "./CollectiveStory";
+import { CreativeMapPanel } from "./CreativeMapPanel";
+import { FeaturedArtists } from "./FeaturedArtists";
+import { HeroPanel } from "./HeroPanel";
+import { UpcomingEvents } from "./UpcomingEvents";
 import styles from "./homePage.module.css";
 
 interface HomePageProps {
@@ -14,28 +13,22 @@ interface HomePageProps {
 
 export function HomePage({ data }: HomePageProps) {
   return (
-    <div className={styles.home}>
-      <HomeHero city={data.city} />
+    <div
+      className={styles.page}
+      data-api-events={data.featured_events.length}
+      data-api-activities={data.activities.length}
+    >
+      <section className={styles.topBand} aria-label="Novera creative overview">
+        <HeroPanel />
+        <CreativeMapPanel cityName="Rome" />
+      </section>
 
-      <HomeSection title="Stats">
-        <HomeStats stats={data.stats} />
-      </HomeSection>
-
-      <HomeSection title="Featured Events">
-        <FeaturedEvents events={data.featured_events} />
-      </HomeSection>
-
-      <HomeSection title="Live Rooms">
-        <LiveRooms rooms={data.live_rooms} />
-      </HomeSection>
-
-      <HomeSection title="Open Calls">
-        <OpenCalls openCalls={data.open_calls} />
-      </HomeSection>
-
-      <HomeSection title="Activities">
-        <ActivityFeed activities={data.activities} />
-      </HomeSection>
+      <section className={styles.lowerGrid} aria-label="Novera dashboard">
+        <FeaturedArtists />
+        <CollectiveStory />
+        <UpcomingEvents />
+        <ActivityRail />
+      </section>
     </div>
   );
 }

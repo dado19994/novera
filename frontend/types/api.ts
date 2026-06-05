@@ -70,6 +70,8 @@ export interface OpenCallSummary {
   role_needed?: string | null;
   status?: string | null;
   urgency?: string | null;
+  reward_type?: string | null;
+  reward_details?: string | null;
   deadline_at?: string | null;
   district?: BasicDistrict | null;
 }

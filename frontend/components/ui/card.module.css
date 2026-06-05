@@ -1,7 +1,7 @@
 .card {
   border: 1px solid var(--hair);
   border-radius: 16px;
-  background: var(--s1);
+  background: var(--surface);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.03),
     0 24px 60px -42px rgba(0, 0, 0, 0.9);

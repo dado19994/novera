@@ -1,0 +1,30 @@
+.tag {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.magenta {
+  color: var(--magenta);
+}
+
+.violet {
+  color: var(--violet-soft);
+}
+
+.amber {
+  color: var(--amber);
+}
+
+.teal {
+  color: var(--teal);
+}
