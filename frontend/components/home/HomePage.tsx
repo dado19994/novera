@@ -4,6 +4,7 @@ import { CollectiveStory } from "./CollectiveStory";
 import { CreativeMapPanel } from "./CreativeMapPanel";
 import { FeaturedArtists } from "./FeaturedArtists";
 import { HeroPanel } from "./HeroPanel";
+import { MatchedSignals } from "./MatchedSignals";
 import { SceneStories } from "./SceneStories";
 import { UpcomingEvents } from "./UpcomingEvents";
 import styles from "./homePage.module.css";
@@ -16,6 +17,7 @@ export function HomePage({ data }: HomePageProps) {
   const featuredEvents = data?.featured_events ?? [];
   const activities = data?.activities ?? [];
   const featuredArtists = data?.featured_artists ?? data?.artists ?? [];
+  const aiMatches = data?.ai_matches ?? [];
 
   return (
     <div
@@ -29,6 +31,8 @@ export function HomePage({ data }: HomePageProps) {
       </section>
 
       <SceneStories />
+
+      <MatchedSignals matches={aiMatches} />
 
       <section className={styles.lowerGrid} aria-label="Novera dashboard">
         <FeaturedArtists artists={featuredArtists} />

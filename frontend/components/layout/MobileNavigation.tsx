@@ -4,7 +4,6 @@ import {
   Bell,
   BriefcaseBusiness,
   CalendarDays,
-  ChevronDown,
   Compass,
   FilePenLine,
   Heart,
@@ -50,6 +49,22 @@ const bottomItems = [
 
 export function MobileNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        setIsSearchOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -57,18 +72,11 @@ export function MobileNavigation() {
     }
 
     const originalOverflow = document.body.style.overflow;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-      }
-    };
 
     document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", closeOnEscape);
 
     return () => {
       document.body.style.overflow = originalOverflow;
-      document.removeEventListener("keydown", closeOnEscape);
     };
   }, [isOpen]);
 
@@ -82,10 +90,19 @@ export function MobileNavigation() {
           </Link>
 
           <div className={styles.topbarControls}>
-            <button className={styles.cityButton} type="button">
+            <button className={styles.cityButton} type="button" aria-label="Open city selector">
               <MapPin size={15} aria-hidden="true" />
               <span>ROME</span>
-              <ChevronDown size={14} aria-hidden="true" />
+            </button>
+
+            <button
+              aria-expanded={isSearchOpen}
+              aria-label="Open search"
+              className={styles.iconButton}
+              onClick={() => setIsSearchOpen((current) => !current)}
+              type="button"
+            >
+              <Search size={18} aria-hidden="true" />
             </button>
 
             <button className={styles.iconButton} type="button" aria-label="Notifications">
@@ -97,20 +114,35 @@ export function MobileNavigation() {
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
               aria-label="Open menu"
-              className={styles.iconButton}
-              onClick={() => setIsOpen(true)}
-              type="button"
-            >
+            className={styles.iconButton}
+            onClick={() => setIsOpen(true)}
+            type="button"
+          >
               <Menu size={20} aria-hidden="true" />
             </button>
           </div>
         </div>
 
-        <label className={styles.searchRow}>
-          <Search size={18} aria-hidden="true" />
-          <span>Search artists, spaces, events, rooms...</span>
-          <kbd>⌘ K</kbd>
-        </label>
+        {isSearchOpen ? (
+          <div className={styles.searchPanel}>
+            <label className={styles.searchRow}>
+              <Search size={18} aria-hidden="true" />
+              <input
+                autoFocus
+                placeholder="Search artists, spaces, events, rooms..."
+                type="search"
+              />
+            </label>
+            <button
+              aria-label="Close search"
+              className={styles.searchClose}
+              onClick={() => setIsSearchOpen(false)}
+              type="button"
+            >
+              <X size={18} aria-hidden="true" />
+            </button>
+          </div>
+        ) : null}
       </header>
 
       <nav className={styles.bottomNav} aria-label="Mobile navigation">

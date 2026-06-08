@@ -127,5 +127,11 @@
 @media (max-width: 1023px) {
   .panel {
     min-height: 0;
+    border-top-color: rgba(255, 47, 146, 0.14);
+    background: #030306;
+  }
+
+  .list {
+    gap: 16px;
   }
 }

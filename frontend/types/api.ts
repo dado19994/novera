@@ -105,12 +105,19 @@ export interface ActivitySummary {
 }
 
 export interface AiMatchSummary {
-  id: number;
-  title: string;
+  id?: number | string;
+  title?: string | null;
+  name?: string | null;
+  type?: string | null;
   reason?: string | null;
-  score: number;
+  description?: string | null;
+  score?: number | null;
+  match_score?: number | null;
   category?: string | null;
+  district?: BasicDistrict | string | null;
+  location?: string | null;
   status?: string | null;
+  cta?: string | null;
 }
 
 export interface HomePayload {

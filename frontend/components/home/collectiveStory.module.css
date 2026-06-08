@@ -216,6 +216,8 @@
     min-height: 0;
     overflow: hidden;
     border-right: 0;
+    border-top-color: rgba(255, 47, 146, 0.14);
+    background: #030306;
   }
 
   .storyVisual {
@@ -248,6 +250,7 @@
   .miniCard {
     grid-template-columns: 44px minmax(0, 1fr) 48px;
     margin: 4px 22px 22px;
+    border-radius: 22px;
   }
 }
 

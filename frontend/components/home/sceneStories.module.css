@@ -364,7 +364,12 @@
 
 @media (max-width: 1023px) {
   .strip {
-    gap: 14px;
+    gap: 13px;
+    padding: 17px 20px 15px;
+    border-bottom-color: rgba(255, 47, 146, 0.065);
+    background:
+      linear-gradient(90deg, rgba(255, 47, 146, 0.024), transparent 48%),
+      #030306;
     overflow: hidden;
   }
 
@@ -381,8 +386,10 @@
   .scroller {
     grid-auto-columns: 84px;
     gap: 14px;
-    margin-inline: 0;
-    padding: 3px 0 9px;
+    margin-inline: -20px;
+    padding: 3px 20px 9px;
+    scroll-behavior: smooth;
+    mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 26px), transparent 100%);
   }
 
   .storyItem::before {
