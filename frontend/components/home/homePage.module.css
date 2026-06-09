@@ -9,16 +9,20 @@
 .topBand {
   display: grid;
   grid-template-columns: minmax(0, 560fr) minmax(0, 692fr);
-  min-height: 540px;
+  min-height: 552px;
   height: auto;
   gap: 0;
   align-items: stretch;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 58% 52%, rgba(255, 47, 146, 0.12), transparent 24rem),
+    #030306;
 }
 
 .lowerGrid {
   display: grid;
   grid-template-columns: 284fr 432fr 268fr 268fr;
-  min-height: 404px;
+  min-height: 392px;
   height: auto;
   gap: 0;
   align-items: stretch;
@@ -46,7 +50,10 @@
 }
 
 @media (max-width: 1280px) {
-  .topBand,
+  .topBand {
+    grid-template-columns: minmax(0, 520fr) minmax(0, 732fr);
+  }
+
   .lowerGrid {
     grid-template-columns: 1fr;
   }
@@ -65,6 +72,10 @@
     width: 100%;
     max-width: 100%;
     min-height: 0;
+  }
+
+  .topBand {
+    grid-template-columns: 1fr;
   }
 
   .lowerGrid {

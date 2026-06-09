@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import type { CSSProperties } from "react";
 import type { AiMatchSummary, BasicDistrict } from "@/types/api";
 import styles from "./matchedSignals.module.css";
@@ -121,19 +121,27 @@ export function MatchedSignals({ matches }: MatchedSignalsProps) {
   const normalizedMatches = matches?.length
     ? matches.slice(0, 4).map(normalizeMatch)
     : fallbackMatches;
+  const visibleMatches = normalizedMatches.slice(0, 3);
 
   return (
-    <section className={styles.section} aria-labelledby="matched-signals-title">
+    <section className={styles.section} id="signals" aria-labelledby="matched-signals-title">
       <div className={styles.header}>
-        <div>
-          <h2 id="matched-signals-title">MATCHED SIGNALS</h2>
-          <p>AI-assisted matches from your creative map.</p>
+        <div className={styles.titleGroup}>
+          <span className={styles.spark} aria-hidden="true">
+            <Sparkles size={14} />
+          </span>
+          <div>
+            <h2 id="matched-signals-title">AI MATCH</h2>
+            <p>{visibleMatches.length} curated matches for you</p>
+          </div>
         </div>
-        <span>AI ASSISTED</span>
+        <button className={styles.viewAll} type="button">
+          View all matches <ArrowRight size={15} aria-hidden="true" />
+        </button>
       </div>
 
       <div className={styles.signalGrid}>
-        {normalizedMatches.map((match, index) => (
+        {visibleMatches.map((match, index) => (
           <button
             aria-label={`Open matched signal: ${match.title}, ${match.score}% match`}
             className={`${styles.card} ${getTone(match.type)}`}
@@ -155,7 +163,7 @@ export function MatchedSignals({ matches }: MatchedSignalsProps) {
               <span className={styles.reason}>{match.reason}</span>
               <span className={styles.cta}>
                 {match.status ? <em>{match.status}</em> : null}
-                Open signal <ArrowRight size={15} aria-hidden="true" />
+                View match <ArrowRight size={15} aria-hidden="true" />
               </span>
             </span>
           </button>
