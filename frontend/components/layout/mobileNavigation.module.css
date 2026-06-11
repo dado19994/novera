@@ -57,8 +57,8 @@
 
   .brand span {
     display: block;
-    width: 30px;
-    height: 30px;
+    width: 36px;
+    height: 36px;
     flex: 0 0 auto;
     background: linear-gradient(135deg, var(--magenta-hot), #ff6c9b 45%, var(--violet));
     clip-path: polygon(0 0, 23% 0, 78% 66%, 78% 0, 100% 0, 100% 100%, 77% 100%, 22% 34%, 22% 100%, 0 100%);

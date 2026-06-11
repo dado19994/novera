@@ -15,26 +15,21 @@ export function CollectiveStory() {
         />
       </div>
       <div className={styles.copy}>
-        <p>COLLECTIVE SIGNAL</p>
-        <h2>
-          BEYOND
-          <br />
-          THE SURFACE
-        </h2>
-        <span>
-          A conversation with SOLSTICE on community, vision, and building for
-          the long run.
-        </span>
+        <p>
+          <span className={styles.desktopLabel}>COLLECTIVE SIGNAL</span>
+          <span className={styles.mobileLabel}>LIVE NOW</span>
+        </p>
+        <h2>Berlin–Rome Exchange</h2>
+        <span>Sound · Visual · Performance</span>
         <a href="#story">
-          READ THE STORY <ArrowRight size={16} aria-hidden="true" />
+          OPEN CALL <ArrowRight size={16} aria-hidden="true" />
         </a>
       </div>
       <div className={styles.miniCard}>
-        <span className={styles.symbol}>SO</span>
+        <span className={styles.symbol}>LIVE</span>
         <div>
-          <strong>SOLSTICE</strong>
-          <small>Electronic · Visuals</small>
-          <small>Rome</small>
+          <strong>12 LISTENING LIVE</strong>
+          <small>12H LEFT</small>
           <span className={styles.waveform} aria-hidden="true">
             {Array.from({ length: 10 }).map((_, index) => (
               <i key={index} style={{ "--bar": index } as CSSProperties} />

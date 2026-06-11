@@ -3,11 +3,9 @@ import {
   Compass,
   FilePenLine,
   Heart,
-  Layers,
   Mail,
   Map,
   MapPin,
-  Network,
   Radio,
   Sparkles,
   Users,
@@ -38,8 +36,6 @@ const primaryNav: NavItem[] = [
 const secondaryNav: NavItem[] = [
   { label: "MESSAGES", href: "#", icon: Mail, badge: "6" },
   { label: "SAVED", href: "#", icon: Heart },
-  { label: "PROJECTS", href: "#", icon: Layers },
-  { label: "COLLABORATIONS", href: "#", icon: Network },
 ];
 
 function renderItem(item: NavItem, isActive = false) {
@@ -94,8 +90,9 @@ export function Sidebar() {
 
       <div className={styles.sidebarBottom}>
         <section className={styles.proCard}>
-          <h2>NOVERA PRO</h2>
-          <p>Tools, insights, and space for what&apos;s next.</p>
+          <span>NOVERA PRO</span>
+          <h2>Go further.</h2>
+          <p>Unlock advanced tools, insights, and more ways to shape culture.</p>
           <a href="#">UPGRADE NOW</a>
         </section>
 

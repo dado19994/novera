@@ -65,13 +65,13 @@
 
 .nav {
   display: grid;
-  gap: 4px;
-  padding: 18px 24px 0;
+  gap: 2px;
+  padding: 14px 24px 0;
 }
 
 .secondary {
-  margin-top: 18px;
-  padding-top: 18px;
+  margin-top: 12px;
+  padding-top: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -80,7 +80,7 @@
   display: grid;
   grid-template-columns: 24px minmax(0, 1fr) auto;
   align-items: center;
-  min-height: 51px;
+  min-height: 44px;
   gap: 16px;
   color: rgba(244, 240, 255, 0.72);
   font-family: var(--font-ui);
@@ -99,7 +99,7 @@
 
 .active {
   margin: 0 -24px;
-  min-height: 54px;
+  min-height: 46px;
   padding: 0 24px;
   background: linear-gradient(90deg, rgba(255, 47, 146, 0.3), rgba(255, 47, 146, 0.1) 54%, transparent);
   color: #f7f4ee;
@@ -151,28 +151,37 @@
 
 .sidebarBottom {
   display: grid;
-  gap: 18px;
+  gap: 14px;
   flex-shrink: 0;
-  padding: 20px 20px 24px;
+  padding: 16px 20px 20px;
 }
 
 .proCard {
   display: grid;
-  gap: 14px;
-  padding: 18px;
+  gap: 8px;
+  padding: 16px;
   border: 1px solid rgba(255, 47, 146, 0.35);
   border-radius: 4px;
   background:
+    radial-gradient(circle at 100% 0%, rgba(255, 47, 146, 0.18), transparent 8rem),
     linear-gradient(180deg, rgba(255, 47, 146, 0.1), rgba(139, 92, 255, 0.08)),
     #050507;
 }
 
-.proCard h2 {
+.proCard span {
   color: var(--magenta);
-  font-family: var(--font-display);
-  font-size: 1.36rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.proCard h2 {
+  color: #f7f4ee;
+  font-family: var(--font-ui);
+  font-size: 1.04rem;
+  font-weight: 900;
+  letter-spacing: 0;
 }
 
 .proCard p {

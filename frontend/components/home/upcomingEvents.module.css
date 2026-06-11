@@ -1,19 +1,21 @@
 .panel {
   display: grid;
-  min-height: 404px;
+  min-height: 278px;
   height: auto;
   grid-template-rows: auto 1fr;
   overflow: visible;
-  border-top: 1px solid rgba(255, 47, 146, 0.22);
-  border-right: 1px solid rgba(255, 47, 146, 0.22);
-  background: #030306;
+  border-top: 1px solid rgba(255, 47, 146, 0.16);
+  border-right: 1px solid rgba(255, 47, 146, 0.14);
+  background:
+    radial-gradient(circle at 80% 16%, rgba(255, 47, 146, 0.08), transparent 12rem),
+    #030306;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
-  min-height: 58px;
-  padding: 20px 18px 13px;
+  min-height: 50px;
+  padding: 16px 16px 8px;
 }
 
 .header h2,
@@ -36,30 +38,36 @@
 
 .list {
   display: grid;
-  padding: 0 16px 15px;
+  padding: 0 14px 14px;
 }
 
 .event {
+  position: relative;
   display: grid;
-  grid-template-columns: 48px 1fr 58px;
+  grid-template-columns: 42px 1fr 48px;
   gap: 10px;
   align-items: center;
-  min-height: 82px;
-  border-top: 1px solid rgba(255, 47, 146, 0.3);
-  transition: border-color 160ms ease, background-color 160ms ease;
+  min-height: 54px;
+  padding: 3px 2px 3px 0;
+  border-top: 1px solid rgba(255, 47, 146, 0.2);
+  transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
 }
 
 .event:hover {
   border-color: rgba(255, 47, 146, 0.48);
   background: rgba(255, 47, 146, 0.035);
+  transform: translateX(1px);
 }
 
 .date {
   display: grid;
-  min-height: 58px;
+  min-height: 44px;
   place-items: center;
   border: 1px solid rgba(255, 47, 146, 0.26);
+  background:
+    linear-gradient(180deg, rgba(255, 47, 146, 0.08), rgba(3, 3, 6, 0.2));
   color: var(--magenta);
+  box-shadow: 0 0 18px rgba(255, 47, 146, 0.07);
 }
 
 .date span {
@@ -71,7 +79,7 @@
 
 .date strong {
   font-family: var(--font-display);
-  font-size: 2.1rem;
+  font-size: 1.65rem;
   font-weight: 400;
   line-height: 0.9;
 }
@@ -84,24 +92,25 @@
 .meta strong {
   color: var(--text);
   font-family: var(--font-ui);
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 800;
   line-height: 1.15;
 }
 
 .meta small {
   color: rgba(244, 240, 255, 0.68);
-  font-size: 0.66rem;
+  font-size: 0.59rem;
 }
 
 .thumb {
   position: relative;
   display: block;
-  width: 56px;
-  height: 50px;
+  width: 46px;
+  height: 42px;
   overflow: hidden;
   border-radius: 2px;
   background: var(--surface);
+  box-shadow: 0 0 18px rgba(255, 47, 146, 0.08);
 }
 
 .thumb img {

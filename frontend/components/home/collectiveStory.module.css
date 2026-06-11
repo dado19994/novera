@@ -1,301 +1,223 @@
 .panel {
   position: relative;
-  display: flex;
-  min-height: 404px;
-  height: auto;
-  overflow: visible;
-  flex-direction: column;
-  border-top: 1px solid rgba(255, 47, 146, 0.22);
-  border-right: 1px solid rgba(255, 47, 146, 0.22);
-  background: #050507;
+  display: grid;
+  min-height: 250px;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 47, 146, 0.16);
+  border-right: 1px solid rgba(255, 47, 146, 0.14);
+  background:
+    radial-gradient(circle at 80% 16%, rgba(255, 47, 146, 0.16), transparent 12rem),
+    linear-gradient(180deg, rgba(255, 47, 146, 0.04), transparent 52%),
+    #07070d;
 }
 
 .storyVisual {
   position: absolute;
-  inset: 0 0 0 38%;
-  width: 62%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.storyVisual::after {
-  position: absolute;
   inset: 0;
-  content: "";
+  opacity: 0.46;
+  pointer-events: none;
 }
 
 .storyVisual img {
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.72) contrast(1.15) brightness(0.56);
+  filter: saturate(0.8) contrast(1.18) brightness(0.42);
 }
 
+.storyVisual::after,
 .panel::before {
   position: absolute;
   inset: 0;
-  z-index: 1;
   content: "";
+}
+
+.storyVisual::after {
   background:
-    linear-gradient(90deg, #030306 0%, rgba(3, 3, 6, 0.94) 42%, rgba(3, 3, 6, 0.18) 72%, rgba(3, 3, 6, 0.62) 100%),
-    radial-gradient(circle at 72% 24%, rgba(255, 47, 146, 0.34), transparent 13rem);
+    linear-gradient(90deg, #07070d 0%, rgba(7, 7, 13, 0.76) 54%, rgba(7, 7, 13, 0.92)),
+    radial-gradient(circle at 78% 62%, rgba(255, 47, 146, 0.2), transparent 12rem);
+}
+
+.panel::before {
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 47, 146, 0.12), transparent 12rem),
+    linear-gradient(rgba(255, 47, 146, 0.018) 1px, transparent 1px);
+  background-size: auto, 24px 24px;
 }
 
 .copy {
   position: relative;
   z-index: 2;
   display: grid;
-  max-width: 59%;
   gap: 8px;
-  padding: 22px 22px 10px;
+  padding: 18px 20px 10px;
 }
 
-.copy p {
+.copy p,
+.copy a {
   color: var(--magenta);
   font-family: var(--font-mono);
   font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mobileLabel {
+  display: none;
 }
 
 .copy h2 {
   color: #f7f4ee;
-  font-family: var(--font-display);
-  font-size: clamp(3.25rem, 3.7vw, 4.25rem);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-  line-height: 0.88;
-  text-shadow: 0 3px 18px rgba(0, 0, 0, 0.62);
+  font-size: 0.94rem;
+  font-weight: 900;
+  line-height: 1.18;
 }
 
-.copy span {
-  color: rgba(244, 240, 255, 0.8);
-  font-family: var(--font-ui);
+.copy span:not(.desktopLabel):not(.mobileLabel) {
+  color: rgba(244, 240, 255, 0.68);
   font-size: 0.78rem;
-  line-height: 1.45;
 }
 
 .copy a {
-  display: inline-flex;
+  display: none;
+  width: fit-content;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   margin-top: 6px;
-  color: var(--magenta);
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.04em;
   text-decoration: none;
-  transition: color 160ms ease;
-}
-
-.copy a svg {
-  transition: transform 160ms ease;
-}
-
-.copy a:hover,
-.copy a:focus-visible {
-  color: #ff72b7;
-}
-
-.copy a:hover svg,
-.copy a:focus-visible svg {
-  transform: translateX(3px);
 }
 
 .miniCard {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   display: grid;
-  grid-template-columns: 44px minmax(0, 1fr) 48px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
   gap: 12px;
-  min-height: 70px;
-  margin: auto 22px 22px;
-  padding: 10px 12px;
-  border: 1px solid rgba(255, 47, 146, 0.24);
-  background: rgba(3, 3, 6, 0.72);
-  transition: border-color 160ms ease, background-color 160ms ease;
-}
-
-.miniCard:hover {
-  border-color: rgba(255, 47, 146, 0.42);
-  background: rgba(8, 5, 12, 0.78);
+  padding: 0 20px 18px;
 }
 
 .symbol {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 999px;
-  background: #f7f4ee;
-  color: #030306;
-  font-family: var(--font-ui);
-  font-size: 0.78rem;
-  font-weight: 900;
+  display: none;
 }
 
 .miniCard div {
   display: grid;
-  gap: 1px;
+  gap: 7px;
   min-width: 0;
 }
 
-.miniCard strong {
-  font-family: var(--font-ui);
-  font-size: 0.82rem;
+.miniCard strong,
+.miniCard small {
+  color: rgba(244, 240, 255, 0.72);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
   font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .miniCard small {
-  color: rgba(244, 240, 255, 0.68);
-  font-size: 0.72rem;
+  justify-self: end;
 }
 
 .waveform {
-  display: inline-flex;
-  height: 14px;
-  align-items: end;
-  gap: 3px;
-  margin-top: 4px;
+  display: flex;
+  height: 54px;
+  align-items: center;
+  gap: 2px;
 }
 
 .waveform i {
   display: block;
   width: 2px;
-  height: 12px;
+  height: calc(12px + (var(--bar) % 5) * 7px);
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--magenta), var(--violet));
-  opacity: 0.72;
-  transform-origin: bottom;
-  animation: waveformIdle 1.55s ease-in-out infinite;
-  animation-delay: calc(var(--bar) * -92ms);
-}
-
-.miniCard:hover .waveform i {
-  opacity: 0.92;
-  animation-duration: 1.05s;
+  background: linear-gradient(180deg, #ff72b7, var(--magenta));
+  box-shadow: 0 0 10px rgba(255, 47, 146, 0.32);
+  transform-origin: center;
 }
 
 .miniCard button {
-  display: grid;
-  width: 46px;
-  height: 46px;
-  place-items: center;
-  border: 1px solid var(--magenta);
-  border-radius: 999px;
-  background: rgba(3, 3, 6, 0.76);
-  color: var(--text);
-  box-shadow: 0 0 24px rgba(255, 47, 146, 0.36);
-  transition: border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease;
-}
-
-.miniCard button svg {
-  transition: transform 160ms ease;
-}
-
-.miniCard button:hover,
-.miniCard button:focus-visible {
-  border-color: #ff72b7;
-  color: #fff;
-  box-shadow: 0 0 28px rgba(255, 47, 146, 0.44);
-}
-
-.miniCard button:hover svg,
-.miniCard button:focus-visible svg {
-  transform: scale(1.06);
-}
-
-.miniCard button:active {
-  transform: translateY(1px);
+  display: none;
 }
 
 @media (max-width: 1023px) {
   .panel {
+    display: grid;
     min-height: 0;
-    overflow: hidden;
-    border-right: 0;
-    border-top-color: rgba(255, 47, 146, 0.14);
-    background: #030306;
+    margin-top: 18px;
+    border: 1px solid rgba(255, 47, 146, 0.18);
+    border-radius: 20px;
+    background:
+      radial-gradient(circle at 88% 20%, rgba(255, 47, 146, 0.18), transparent 12rem),
+      #07070d;
   }
 
   .storyVisual {
-    inset: 0;
-    width: 100%;
-    opacity: 0.78;
+    inset: 18px auto 18px 18px;
+    width: 132px;
+    border-radius: 14px;
+    opacity: 1;
+    overflow: hidden;
   }
 
-  .panel::before {
+  .storyVisual::after {
     background:
-      linear-gradient(90deg, #030306 0%, rgba(3, 3, 6, 0.84) 48%, rgba(3, 3, 6, 0.3) 100%),
-      linear-gradient(180deg, rgba(3, 3, 6, 0.04), rgba(3, 3, 6, 0.9)),
-      radial-gradient(circle at 72% 24%, rgba(255, 47, 146, 0.26), transparent 13rem);
+      radial-gradient(circle at 42% 72%, rgba(255, 47, 146, 0.42), transparent 62%),
+      linear-gradient(180deg, transparent, rgba(3, 3, 6, 0.24));
   }
 
   .copy {
-    max-width: 100%;
-    padding: 24px 22px 12px;
+    min-height: 172px;
+    padding: 18px 18px 14px 164px;
+  }
+
+  .desktopLabel {
+    display: none;
+  }
+
+  .mobileLabel {
+    display: inline;
   }
 
   .copy h2 {
-    max-width: 270px;
-    font-size: clamp(3.45rem, 16vw, 4.8rem);
+    font-size: 1.14rem;
   }
 
-  .copy span {
-    max-width: 270px;
+  .copy span:not(.desktopLabel):not(.mobileLabel) {
+    font-size: 0.86rem;
   }
 
-  .miniCard {
-    grid-template-columns: 44px minmax(0, 1fr) 48px;
-    margin: 4px 22px 22px;
-    border-radius: 22px;
-  }
-}
-
-@media (max-width: 480px) {
-  .copy {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-
-  .copy h2 {
-    max-width: 230px;
-  }
-
-  .copy span {
-    max-width: 240px;
+  .copy a {
+    display: inline-flex;
   }
 
   .miniCard {
-    grid-template-columns: 42px minmax(0, 1fr) 44px;
-    gap: 10px;
-    margin-right: 20px;
-    margin-left: 20px;
-    padding: 10px;
+    grid-template-columns: 132px minmax(0, 1fr);
+    align-items: center;
+    padding: 0 18px 18px;
   }
 
-  .miniCard button {
-    width: 44px;
-    height: 44px;
+  .symbol {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    width: fit-content;
+    align-self: end;
+    margin: 0 0 10px 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background: var(--magenta);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 900;
   }
-}
 
-@keyframes waveformIdle {
-  0%,
-  100% {
-    transform: scaleY(0.36);
-  }
-
-  46% {
-    transform: scaleY(1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .waveform i {
-    animation: none;
-    transform: scaleY(0.72);
+  .waveform {
+    height: 36px;
   }
 }

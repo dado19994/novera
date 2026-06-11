@@ -41,8 +41,8 @@ const stories = [
     image: "/images/reference/elijah-ekdahl-8XxF2kYHIgo-unsplash.jpg",
   },
   {
-    title: "Solstice",
-    meta: "Collective",
+    title: "Garbatella",
+    meta: "Session",
     tone: "magenta",
     image: "/images/reference/neon-wang-gHizpv7OnNE-unsplash.jpg",
   },
@@ -56,14 +56,14 @@ const stories = [
 
 export function SceneStories() {
   return (
-    <section className={styles.strip} aria-labelledby="scene-stories-heading">
+    <section className={styles.strip} id="stories" aria-labelledby="scene-stories-heading">
       <header className={styles.header}>
         <div>
-          <h2 id="scene-stories-heading">SCENE STORIES</h2>
-          <p>Live fragments from Rome&apos;s creative map.</p>
+          <h2 id="scene-stories-heading">STORIES &amp; SIGNALS</h2>
+          <p>Live moments from the network</p>
         </div>
         <a href="#signals">
-          VIEW ALL STORIES <ArrowRight size={15} aria-hidden="true" />
+          VIEW ALL <ArrowRight size={15} aria-hidden="true" />
         </a>
       </header>
 

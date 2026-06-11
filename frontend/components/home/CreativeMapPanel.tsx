@@ -19,6 +19,32 @@ interface CreativeMapPanelProps {
 
 const zoomLabels = ["Signal view", "Pulse view", "Flow view"];
 
+const ambientRoutes = [
+  "M42 142 C162 88 278 128 382 72 C494 12 592 30 704 86",
+  "M18 346 C126 286 214 314 318 232 C436 140 536 130 706 178",
+  "M68 420 C168 340 266 336 366 292 C474 246 586 278 692 244",
+  "M232 18 C274 102 248 178 326 242 C404 308 494 312 608 382",
+  "M132 70 C218 174 300 198 422 186 C528 176 598 108 708 128",
+  "M86 250 C188 242 244 168 356 166 C478 164 576 220 690 320",
+  "M188 486 C272 420 330 378 452 384 C550 390 612 430 704 466",
+  "M4 202 C110 178 222 212 322 264 C430 320 550 344 706 330",
+];
+
+const ambientNodes = [
+  { x: 44, y: 29, tone: "spaces" },
+  { x: 50, y: 40, tone: "events" },
+  { x: 61, y: 47, tone: "collectives" },
+  { x: 66, y: 58, tone: "artists" },
+  { x: 74, y: 43, tone: "collectives" },
+  { x: 83, y: 62, tone: "events" },
+  { x: 70, y: 25, tone: "spaces" },
+  { x: 88, y: 31, tone: "collectives" },
+  { x: 48, y: 70, tone: "artists" },
+  { x: 38, y: 60, tone: "events" },
+  { x: 57, y: 76, tone: "collectives" },
+  { x: 28, y: 42, tone: "spaces" },
+];
+
 function getDistrictToneClass(tone: MapDistrict["tone"]) {
   return styles[tone];
 }
@@ -36,7 +62,7 @@ function getStatsLine(district: MapDistrict) {
 }
 
 export function CreativeMapPanel({ cityName }: CreativeMapPanelProps) {
-  const [selectedDistrictId, setSelectedDistrictId] = useState<string | null>(null);
+  const [selectedDistrictId, setSelectedDistrictId] = useState<string | null>("ostiense");
   const [hoveredDistrictId, setHoveredDistrictId] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<MapCategory | null>(null);
   const [mapZoomLevel, setMapZoomLevel] = useState(1);
@@ -134,6 +160,11 @@ export function CreativeMapPanel({ cityName }: CreativeMapPanelProps) {
         aria-label={`${cityName} Creative Map district signals`}
         style={{ "--map-zoom": mapZoomLevel } as CSSProperties}
       >
+        <svg className={styles.ambientRoutes} viewBox="0 0 720 500" aria-hidden="true">
+          {ambientRoutes.map((route, index) => (
+            <path key={route} d={route} style={{ "--ambient-index": index } as CSSProperties} />
+          ))}
+        </svg>
         <svg className={styles.routes} viewBox="0 0 720 500" role="img" aria-label="Creative signal routes">
           {mapRoutes.map((route) => (
             <path
@@ -145,6 +176,19 @@ export function CreativeMapPanel({ cityName }: CreativeMapPanelProps) {
             />
           ))}
         </svg>
+        <div className={styles.ambientNodes} aria-hidden="true">
+          {ambientNodes.map((node, index) => (
+            <span
+              className={`${styles.ambientNode} ${styles[`ambient${node.tone[0].toUpperCase()}${node.tone.slice(1)}` as keyof typeof styles]}`}
+              key={`${node.x}-${node.y}`}
+              style={{
+                "--ambient-node-index": index,
+                left: `${node.x}%`,
+                top: `${node.y}%`,
+              } as CSSProperties}
+            />
+          ))}
+        </div>
         <span className={styles.pulse} aria-hidden="true" />
 
         {mapDistricts.map((district) => (

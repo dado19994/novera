@@ -1,86 +1,74 @@
 .strip {
   position: relative;
+  z-index: 4;
   display: grid;
-  gap: 14px;
-  padding: 17px 20px 16px;
-  border-bottom: 1px solid rgba(255, 47, 146, 0.13);
-  background:
-    radial-gradient(circle at 14% 0%, rgba(255, 47, 146, 0.07), transparent 16rem),
-    linear-gradient(90deg, rgba(255, 47, 146, 0.026), transparent 34%),
-    #030306;
+  grid-template-columns: 170px minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
+  min-height: 126px;
+  padding: 18px 26px;
   overflow: hidden;
-  animation: storiesStripIn 0.42s 0.62s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
-.strip::before {
-  position: absolute;
-  inset: 0 0 auto;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 47, 146, 0.28), transparent);
-  content: "";
-  opacity: 0.5;
+  border-top: 1px solid rgba(255, 47, 146, 0.18);
+  border-bottom: 1px solid rgba(255, 47, 146, 0.18);
+  background:
+    radial-gradient(circle at 20% 50%, rgba(255, 47, 146, 0.09), transparent 18rem),
+    linear-gradient(90deg, rgba(255, 47, 146, 0.025), transparent 42%),
+    rgba(3, 3, 6, 0.94);
 }
 
 .header {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 18px;
+  display: grid;
+  gap: 8px;
+  min-width: 0;
 }
 
 .header div {
   display: grid;
-  gap: 4px;
+  gap: 5px;
 }
 
 .header h2 {
-  color: var(--magenta);
+  color: #f7f4ee;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.header h2::before {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  border-radius: 999px;
+  background: var(--magenta);
+  box-shadow: 0 0 12px rgba(255, 47, 146, 0.7);
+  content: "";
+  vertical-align: 1px;
 }
 
 .header p {
-  color: rgba(244, 240, 255, 0.68);
-  font-size: 0.78rem;
+  color: rgba(244, 240, 255, 0.62);
+  font-size: 0.72rem;
+  line-height: 1.35;
 }
 
 .header a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: rgba(244, 240, 255, 0.72);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: color 160ms ease;
-}
-
-.header a svg {
-  transition: transform 160ms ease;
-}
-
-.header a:hover,
-.header a:focus-visible {
-  color: var(--magenta);
-}
-
-.header a:hover svg,
-.header a:focus-visible svg {
-  transform: translateX(3px);
+  display: none;
 }
 
 .scroller {
   display: grid;
-  grid-template-columns: repeat(8, minmax(72px, 1fr));
-  gap: clamp(8px, 1vw, 16px);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(76px, 1fr);
+  align-items: start;
+  gap: clamp(18px, 3vw, 46px);
   min-width: 0;
-  overflow: visible;
-  padding: 1px 1px 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  padding: 6px 0 8px;
+  scrollbar-width: none;
 }
 
 .scroller::-webkit-scrollbar {
@@ -91,66 +79,33 @@
   --story-color: var(--magenta);
   position: relative;
   display: grid;
-  justify-items: center;
-  gap: 5px;
   min-width: 0;
+  justify-items: center;
+  gap: 7px;
+  padding: 0;
   border: 0;
   background: transparent;
   color: var(--text);
   cursor: pointer;
   font: inherit;
-  padding: 0;
   text-align: center;
-  animation: storyItemIn 0.44s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-  animation-delay: calc(0.74s + var(--story-index) * 55ms);
-}
-
-.storyItem::before {
-  position: absolute;
-  inset: 1px auto auto 50%;
-  width: 72px;
-  height: 72px;
-  border-radius: 999px;
-  background:
-    radial-gradient(circle, color-mix(in srgb, var(--story-color) 14%, transparent), transparent 68%);
-  content: "";
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%);
-  transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .storyItem::after {
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  width: 22px;
+  width: 28px;
   height: 2px;
+  margin-top: -2px;
   border-radius: 999px;
   background: var(--story-color);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--story-color) 44%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--story-color) 45%, transparent);
   content: "";
   opacity: 0;
-  transform: translateX(-50%) scaleX(0.7);
-  transition: opacity 160ms ease, transform 160ms ease;
-}
-
-.storyItem:hover::before,
-.storyItem:focus-visible::before {
-  opacity: 1;
-  transform: translateX(-50%) scale(1.05);
 }
 
 .storyItem:hover::after,
 .storyItem:focus-visible::after,
 .active::after {
-  opacity: 0.92;
-  transform: translateX(-50%) scaleX(1);
-}
-
-.storyItem:focus-visible {
-  outline: 2px solid color-mix(in srgb, var(--story-color) 72%, transparent);
-  outline-offset: 7px;
+  opacity: 1;
 }
 
 .orb {
@@ -160,38 +115,29 @@
   height: 66px;
   place-items: center;
   transition: transform 160ms ease, filter 160ms ease;
-  z-index: 1;
 }
 
 .storyItem:hover .orb,
 .storyItem:focus-visible .orb {
-  filter: brightness(1.08) drop-shadow(0 0 10px color-mix(in srgb, var(--story-color) 22%, transparent));
-  transform: translateY(-1px);
+  filter: drop-shadow(0 0 13px color-mix(in srgb, var(--story-color) 30%, transparent));
+  transform: translateY(-2px);
 }
 
 .signalRing {
   position: absolute;
   inset: 0;
-  border: 1px solid color-mix(in srgb, var(--story-color) 68%, transparent);
+  border: 1px solid color-mix(in srgb, var(--story-color) 72%, transparent);
   border-radius: 999px;
   background:
-    conic-gradient(
-      from 132deg,
-      color-mix(in srgb, var(--story-color) 0%, transparent),
-      color-mix(in srgb, var(--story-color) 76%, transparent),
-      color-mix(in srgb, var(--story-color) 16%, transparent),
-      color-mix(in srgb, var(--story-color) 0%, transparent)
-    );
+    conic-gradient(from 145deg, transparent, color-mix(in srgb, var(--story-color) 76%, transparent), transparent 72%);
   box-shadow:
-    0 0 0 2px color-mix(in srgb, var(--story-color) 8%, transparent),
-    0 0 14px color-mix(in srgb, var(--story-color) 18%, transparent);
-  opacity: 0.88;
-  pointer-events: none;
+    0 0 0 3px color-mix(in srgb, var(--story-color) 9%, transparent),
+    0 0 18px color-mix(in srgb, var(--story-color) 22%, transparent);
 }
 
 .signalRing::after {
   position: absolute;
-  inset: 3px;
+  inset: 4px;
   border-radius: inherit;
   background: #030306;
   content: "";
@@ -199,15 +145,14 @@
 
 .imageWrap {
   position: relative;
+  z-index: 1;
   display: block;
   width: 58px;
   height: 58px;
+  overflow: hidden;
   border: 1px solid rgba(244, 240, 255, 0.14);
   border-radius: 999px;
   background: var(--surface);
-  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.54);
-  overflow: hidden;
-  z-index: 1;
 }
 
 .imageWrap::after {
@@ -215,76 +160,51 @@
   inset: 0;
   border-radius: inherit;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 46%),
-    radial-gradient(circle at 50% 50%, transparent 38%, rgba(3, 3, 6, 0.2));
+    radial-gradient(circle at 50% 86%, color-mix(in srgb, var(--story-color) 24%, transparent), transparent 54%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 44%);
   content: "";
-  pointer-events: none;
 }
 
 .imageWrap img {
   object-fit: cover;
-  filter: saturate(0.9) contrast(1.16) brightness(0.74);
-  transition: filter 160ms ease, transform 160ms ease;
-}
-
-.storyItem:hover .imageWrap img,
-.storyItem:focus-visible .imageWrap img {
-  filter: saturate(1) contrast(1.18) brightness(0.84);
-  transform: scale(1.015);
+  filter: saturate(0.92) contrast(1.16) brightness(0.74);
 }
 
 .statusDot {
   position: absolute;
   right: 5px;
   bottom: 7px;
+  z-index: 2;
   width: 8px;
   height: 8px;
   border: 2px solid #030306;
   border-radius: 999px;
   background: var(--story-color);
-  box-shadow: 0 0 11px color-mix(in srgb, var(--story-color) 68%, transparent);
-  z-index: 2;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--story-color) 70%, transparent);
 }
 
 .storyTitle,
 .storyMeta {
-  position: relative;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 86px;
   text-overflow: ellipsis;
   white-space: nowrap;
-  z-index: 1;
 }
 
 .storyTitle {
   color: #f7f4ee;
-  font-size: 0.76rem;
+  font-size: 0.72rem;
   font-weight: 800;
   line-height: 1.1;
-  transition: color 160ms ease;
 }
 
 .storyMeta {
   color: var(--story-color);
   font-family: var(--font-mono);
-  font-size: 0.59rem;
+  font-size: 0.56rem;
   font-weight: 800;
   letter-spacing: 0.1em;
-  line-height: 1;
   text-transform: uppercase;
-}
-
-.storyItem:hover .storyTitle,
-.storyItem:focus-visible .storyTitle {
-  color: #fff;
-}
-
-.active .signalRing {
-  animation: activeRingPulse 3.2s ease-in-out infinite;
-}
-
-.active .statusDot {
-  animation: activeDotPulse 2.4s ease-in-out infinite;
 }
 
 .magenta {
@@ -303,82 +223,51 @@
   --story-color: var(--amber);
 }
 
-@keyframes storiesStripIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes storyItemIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes activeRingPulse {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 3px color-mix(in srgb, var(--story-color) 8%, transparent),
-      0 0 15px color-mix(in srgb, var(--story-color) 20%, transparent);
-    opacity: 0.88;
-  }
-
-  48% {
-    box-shadow:
-      0 0 0 4px color-mix(in srgb, var(--story-color) 10%, transparent),
-      0 0 19px color-mix(in srgb, var(--story-color) 28%, transparent);
-    opacity: 0.96;
-  }
-}
-
-@keyframes activeDotPulse {
-  0%,
-  100% {
-    transform: none;
-  }
-
-  45% {
-    transform: scale(1.14);
-  }
-}
-
-@media (max-width: 720px) {
+@media (max-width: 1023px) {
   .strip {
-    padding: 16px 14px 14px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    min-height: 0;
+    padding: 0 20px 22px;
+    border-top: 0;
+    border-bottom-color: rgba(255, 47, 146, 0.12);
+    background: #030306;
   }
 
   .header {
-    align-items: start;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 4px;
   }
 
   .header p {
     display: none;
   }
 
+  .header a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(244, 240, 255, 0.78);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
   .scroller {
-    grid-auto-columns: 84px;
-    grid-auto-flow: column;
-    grid-template-columns: none;
-    gap: 12px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding-bottom: 8px;
-    scroll-padding-inline: 1px;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
+    display: flex;
+    gap: 22px;
+    padding: 2px 0 7px;
+  }
+
+  .storyItem {
+    flex: 0 0 78px;
   }
 
   .orb {
@@ -392,88 +281,6 @@
   }
 
   .storyTitle {
-    font-size: 0.73rem;
-  }
-
-  .storyMeta {
-    font-size: 0.54rem;
-  }
-}
-
-@media (max-width: 1023px) {
-  .strip {
-    gap: 13px;
-    padding: 17px 20px 15px;
-    border-bottom-color: rgba(255, 47, 146, 0.065);
-    background:
-      linear-gradient(90deg, rgba(255, 47, 146, 0.024), transparent 48%),
-      #030306;
-    overflow: hidden;
-  }
-
-  .header {
-    align-items: start;
-  }
-
-  .header a {
-    gap: 6px;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
-  }
-
-  .scroller {
-    grid-auto-columns: 84px;
-    grid-auto-flow: column;
-    grid-template-columns: none;
-    gap: 14px;
-    margin-inline: -20px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding: 3px 20px 9px;
-    scroll-behavior: smooth;
-    scroll-padding-inline: 20px;
-    scroll-snap-type: x proximity;
-    scrollbar-width: none;
-    mask-image: linear-gradient(90deg, transparent 0, #000 14px, #000 calc(100% - 26px), transparent 100%);
-  }
-
-  .storyItem {
-    scroll-snap-align: start;
-  }
-
-  .storyItem::before {
-    display: none;
-  }
-
-  .storyItem:focus-visible {
-    outline-offset: 4px;
-  }
-
-  .orb {
-    width: 66px;
-    height: 66px;
-  }
-
-  .imageWrap {
-    width: 58px;
-    height: 58px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .strip,
-  .storyItem,
-  .active .signalRing,
-  .active .statusDot {
-    animation: none;
-  }
-
-  .header a,
-  .header a svg,
-  .storyItem::before,
-  .orb,
-  .imageWrap img,
-  .storyTitle {
-    transition-duration: 0.01ms;
+    font-size: 0.78rem;
   }
 }

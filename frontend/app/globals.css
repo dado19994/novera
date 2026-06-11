@@ -109,9 +109,3 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
-
-@media (max-width: 1023px) {
-  nextjs-portal {
-    display: none !important;
-  }
-}

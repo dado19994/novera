@@ -4,7 +4,6 @@ import { CollectiveStory } from "./CollectiveStory";
 import { CreativeMapPanel } from "./CreativeMapPanel";
 import { FeaturedArtists } from "./FeaturedArtists";
 import { HeroPanel } from "./HeroPanel";
-import { MatchedSignals } from "./MatchedSignals";
 import { SceneStories } from "./SceneStories";
 import { UpcomingEvents } from "./UpcomingEvents";
 import styles from "./homePage.module.css";
@@ -25,16 +24,13 @@ export function HomePage({ data }: HomePageProps) {
       data-api-events={featuredEvents.length}
       data-api-activities={activities.length}
     >
-      <section className={styles.topBand} aria-label="Novera creative overview">
-        <HeroPanel />
+      <section className={styles.topBand} id="map" aria-label="Novera creative overview">
+        <HeroPanel matches={aiMatches} />
         <CreativeMapPanel cityName="Rome" />
+        <SceneStories />
       </section>
 
-      <SceneStories />
-
-      <MatchedSignals matches={aiMatches} />
-
-      <section className={styles.lowerGrid} aria-label="Novera dashboard">
+      <section className={styles.lowerGrid} id="dashboard" aria-label="Novera dashboard">
         <FeaturedArtists artists={featuredArtists} />
         <CollectiveStory />
         <UpcomingEvents events={featuredEvents} />

@@ -1,5 +1,4 @@
 import { ArrowRight, Sparkles } from "lucide-react";
-import type { CSSProperties } from "react";
 import type { AiMatchSummary, BasicDistrict } from "@/types/api";
 import styles from "./matchedSignals.module.css";
 
@@ -95,80 +94,26 @@ function normalizeMatch(match: AiMatchSummary, index: number): MatchedSignal {
   };
 }
 
-function getTone(type: string) {
-  const value = type.toLowerCase();
-
-  if (value.includes("artist")) {
-    return styles.toneCyan;
-  }
-
-  if (value.includes("event")) {
-    return styles.toneAmber;
-  }
-
-  if (value.includes("space")) {
-    return styles.toneViolet;
-  }
-
-  if (value.includes("call")) {
-    return styles.toneMagenta;
-  }
-
-  return styles.toneRose;
-}
-
 export function MatchedSignals({ matches }: MatchedSignalsProps) {
   const normalizedMatches = matches?.length
     ? matches.slice(0, 4).map(normalizeMatch)
     : fallbackMatches;
   const visibleMatches = normalizedMatches.slice(0, 3);
+  const topMatch = visibleMatches[0];
 
   return (
-    <section className={styles.section} id="signals" aria-labelledby="matched-signals-title">
-      <div className={styles.header}>
-        <div className={styles.titleGroup}>
-          <span className={styles.spark} aria-hidden="true">
-            <Sparkles size={14} />
-          </span>
-          <div>
-            <h2 id="matched-signals-title">AI MATCH</h2>
-            <p>{visibleMatches.length} curated matches for you</p>
-          </div>
-        </div>
-        <button className={styles.viewAll} type="button">
-          View all matches <ArrowRight size={15} aria-hidden="true" />
-        </button>
-      </div>
-
-      <div className={styles.signalGrid}>
-        {visibleMatches.map((match, index) => (
-          <button
-            aria-label={`Open matched signal: ${match.title}, ${match.score}% match`}
-            className={`${styles.card} ${getTone(match.type)}`}
-            key={match.id}
-            style={{ "--signal-index": index } as CSSProperties}
-            type="button"
-          >
-            <span className={styles.orbit} aria-hidden="true" />
-            <span className={styles.score} aria-label={`${match.score}% match`}>
-              {match.score}
-              <small>%</small>
-            </span>
-            <span className={styles.content}>
-              <span className={styles.meta}>
-                <b>{match.type}</b>
-                <i>{match.district}</i>
-              </span>
-              <strong>{match.title}</strong>
-              <span className={styles.reason}>{match.reason}</span>
-              <span className={styles.cta}>
-                {match.status ? <em>{match.status}</em> : null}
-                View match <ArrowRight size={15} aria-hidden="true" />
-              </span>
-            </span>
-          </button>
-        ))}
-      </div>
-    </section>
+    <a
+      className={styles.pill}
+      href="#map"
+      id="signals"
+      aria-label={`AI Match: ${visibleMatches.length} curated matches for you${topMatch ? `. Top match: ${topMatch.title}, ${topMatch.score}% match in ${topMatch.district}` : ""}`}
+    >
+      <span className={styles.spark} aria-hidden="true">
+        <Sparkles size={14} />
+      </span>
+      <span className={styles.label}>AI MATCH</span>
+      <span className={styles.summary}>{visibleMatches.length} curated matches for you</span>
+      <ArrowRight className={styles.arrow} size={15} aria-hidden="true" />
+    </a>
   );
 }
