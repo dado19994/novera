@@ -20,29 +20,28 @@ interface CreativeMapPanelProps {
 const zoomLabels = ["Signal view", "Pulse view", "Flow view"];
 
 const ambientRoutes = [
-  "M42 142 C162 88 278 128 382 72 C494 12 592 30 704 86",
-  "M18 346 C126 286 214 314 318 232 C436 140 536 130 706 178",
-  "M68 420 C168 340 266 336 366 292 C474 246 586 278 692 244",
-  "M232 18 C274 102 248 178 326 242 C404 308 494 312 608 382",
-  "M132 70 C218 174 300 198 422 186 C528 176 598 108 708 128",
-  "M86 250 C188 242 244 168 356 166 C478 164 576 220 690 320",
-  "M188 486 C272 420 330 378 452 384 C550 390 612 430 704 466",
-  "M4 202 C110 178 222 212 322 264 C430 320 550 344 706 330",
+  "M256 132 C300 104 392 100 444 132",
+  "M218 232 C238 290 300 330 372 332",
+  "M444 264 C492 240 520 198 512 152",
+  "M180 130 C150 170 148 222 176 264",
+  "M404 88 C456 102 500 134 524 176",
+  "M120 220 C140 184 170 156 210 138",
+  "M256 300 C300 322 352 328 404 314",
 ];
 
 const ambientNodes = [
-  { x: 44, y: 29, tone: "spaces" },
-  { x: 50, y: 40, tone: "events" },
-  { x: 61, y: 47, tone: "collectives" },
-  { x: 66, y: 58, tone: "artists" },
-  { x: 74, y: 43, tone: "collectives" },
-  { x: 83, y: 62, tone: "events" },
-  { x: 70, y: 25, tone: "spaces" },
-  { x: 88, y: 31, tone: "collectives" },
-  { x: 48, y: 70, tone: "artists" },
-  { x: 38, y: 60, tone: "events" },
-  { x: 57, y: 76, tone: "collectives" },
-  { x: 28, y: 42, tone: "spaces" },
+  { x: 44, y: 18, tone: "spaces" },
+  { x: 52, y: 24, tone: "events" },
+  { x: 60, y: 22, tone: "collectives" },
+  { x: 64, y: 30, tone: "artists" },
+  { x: 56, y: 34, tone: "collectives" },
+  { x: 40, y: 30, tone: "spaces" },
+  { x: 30, y: 34, tone: "events" },
+  { x: 18, y: 38, tone: "collectives" },
+  { x: 28, y: 50, tone: "artists" },
+  { x: 34, y: 60, tone: "events" },
+  { x: 46, y: 56, tone: "collectives" },
+  { x: 52, y: 46, tone: "artists" },
 ];
 
 function getDistrictToneClass(tone: MapDistrict["tone"]) {

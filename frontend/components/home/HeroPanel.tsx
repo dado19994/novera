@@ -15,7 +15,7 @@ const trendTags = [
   "+4",
 ];
 
-const headlineLines = ["CULTURE", "MOVES", "THROUGH US"];
+const headlineLines = ["CULTURE", "MOVES", "THROUGH", "US"];
 
 interface HeroPanelProps {
   matches?: AiMatchSummary[] | null;

@@ -66,7 +66,7 @@
 }
 
 .eyebrow {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   color: var(--magenta);
   font-family: var(--font-mono);
   font-size: 0.7rem;
@@ -77,7 +77,7 @@
 .headline {
   color: #f7f4ee;
   font-family: var(--font-display);
-  font-size: clamp(4.4rem, 5.35vw, 6.05rem);
+  font-size: clamp(4.2rem, 5.1vw, 5.6rem);
   font-weight: 400;
   letter-spacing: 0.01em;
   line-height: 0.82;
@@ -100,7 +100,7 @@
 
 .description {
   max-width: 392px;
-  margin-top: 14px;
+  margin-top: 12px;
   color: rgba(244, 240, 255, 0.76);
   font-size: 0.91rem;
   line-height: 1.48;
@@ -109,12 +109,12 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 18px;
-  margin-top: 18px;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .actions a:first-child {
-  min-width: 200px;
+  min-width: 192px;
 }
 
 .actions a:nth-child(2) {
@@ -208,24 +208,27 @@
   }
 }
 
+@media (max-width: 640px) {
+  .actions {
+    width: min(100%, 360px);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+    margin-top: 20px;
+  }
+
+  .actions a:first-child {
+    width: 100%;
+  }
+
+  .actions a:nth-child(2) {
+    align-self: flex-start;
+  }
+}
+
 @media (max-width: 520px) {
   .copy {
     padding-right: 20px;
     padding-left: 20px;
-  }
-
-  .actions {
-    align-items: flex-start;
-  }
-
-  .actions a:first-child {
-    width: min(100%, 278px);
-  }
-}
-
-@media (max-width: 374px) {
-  .actions {
-    flex-direction: column;
-    gap: 14px;
   }
 }

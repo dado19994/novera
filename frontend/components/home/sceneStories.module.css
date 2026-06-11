@@ -81,7 +81,7 @@
   display: grid;
   min-width: 0;
   justify-items: center;
-  gap: 7px;
+  gap: 6px;
   padding: 0;
   border: 0;
   background: transparent;
@@ -141,6 +141,13 @@
   border-radius: inherit;
   background: #030306;
   content: "";
+}
+
+.active .signalRing {
+  border-color: color-mix(in srgb, var(--story-color) 92%, transparent);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--story-color) 14%, transparent),
+    0 0 24px color-mix(in srgb, var(--story-color) 36%, transparent);
 }
 
 .imageWrap {
@@ -263,7 +270,8 @@
   .scroller {
     display: flex;
     gap: 22px;
-    padding: 2px 0 7px;
+    margin: 0 -20px;
+    padding: 2px 20px 8px;
   }
 
   .storyItem {
