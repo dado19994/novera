@@ -140,6 +140,12 @@
   transform: translateX(3px);
 }
 
+@media (max-width: 1680px) {
+  .header span {
+    display: none;
+  }
+}
+
 @media (max-width: 1023px) {
   .panel {
     min-height: 0;

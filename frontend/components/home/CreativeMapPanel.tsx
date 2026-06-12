@@ -27,6 +27,10 @@ const ambientRoutes = [
   "M404 88 C456 102 500 134 524 176",
   "M120 220 C140 184 170 156 210 138",
   "M256 300 C300 322 352 328 404 314",
+  "M300 160 C322 142 352 136 380 144",
+  "M386 232 C376 258 356 276 328 284",
+  "M296 232 C282 214 278 192 286 170",
+  "M352 250 C384 246 410 230 424 204",
 ];
 
 const ambientNodes = [
@@ -42,6 +46,14 @@ const ambientNodes = [
   { x: 34, y: 60, tone: "events" },
   { x: 46, y: 56, tone: "collectives" },
   { x: 52, y: 46, tone: "artists" },
+  { x: 46, y: 33, tone: "events" },
+  { x: 50, y: 41, tone: "spaces" },
+  { x: 43, y: 44, tone: "collectives" },
+  { x: 55, y: 26, tone: "spaces" },
+  { x: 35, y: 21, tone: "artists" },
+  { x: 23, y: 28, tone: "spaces" },
+  { x: 38, y: 48, tone: "collectives" },
+  { x: 47, y: 64, tone: "artists" },
 ];
 
 function getDistrictToneClass(tone: MapDistrict["tone"]) {
@@ -120,6 +132,12 @@ export function CreativeMapPanel({ cityName }: CreativeMapPanelProps) {
 
   return (
     <article className={styles.panel}>
+      <header className={styles.previewHead}>
+        <p>Map preview</p>
+        <a href="#map">
+          EXPLORE MAP <ArrowRight size={14} aria-hidden="true" />
+        </a>
+      </header>
       <div className={styles.copy}>
         <p>{cityName.toUpperCase()}</p>
         <h2>CREATIVE MAP</h2>

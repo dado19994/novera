@@ -54,7 +54,7 @@
 
 .lowerGrid {
   display: grid;
-  grid-template-columns: 1.14fr 1fr 0.94fr 0.94fr;
+  grid-template-columns: 1.08fr 1fr 0.92fr 0.92fr 1fr;
   min-height: 250px;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 47, 146, 0.16);
@@ -104,7 +104,7 @@
     display: block;
     width: 100%;
     max-width: 100%;
-    padding: 0 16px 96px;
+    padding: 0 16px 30px;
     overflow: hidden;
     border-bottom: 0;
     background: #030306;
@@ -115,6 +115,6 @@
   }
 
   .lowerGrid > *:nth-child(2) {
-    display: flex;
+    display: grid;
   }
 }

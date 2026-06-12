@@ -5,6 +5,7 @@ import { CreativeMapPanel } from "./CreativeMapPanel";
 import { FeaturedArtists } from "./FeaturedArtists";
 import { HeroPanel } from "./HeroPanel";
 import { SceneStories } from "./SceneStories";
+import { SignalsNearYou } from "./SignalsNearYou";
 import { UpcomingEvents } from "./UpcomingEvents";
 import styles from "./homePage.module.css";
 
@@ -35,6 +36,7 @@ export function HomePage({ data }: HomePageProps) {
         <CollectiveStory />
         <UpcomingEvents events={featuredEvents} />
         <ActivityRail activities={activities} />
+        <SignalsNearYou />
       </section>
     </div>
   );

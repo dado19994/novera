@@ -6,7 +6,7 @@
   gap: 22px;
   align-items: center;
   min-height: 126px;
-  padding: 18px 26px;
+  padding: 18px 78px 18px 26px;
   overflow: hidden;
   border-top: 1px solid rgba(255, 47, 146, 0.18);
   border-bottom: 1px solid rgba(255, 47, 146, 0.18);
@@ -54,7 +54,37 @@
 }
 
 .header a {
-  display: none;
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  display: inline-flex;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(7, 7, 12, 0.82);
+  color: rgba(244, 240, 255, 0.85);
+  text-decoration: none;
+  transform: translateY(-50%);
+  transition: border-color 160ms ease, color 160ms ease, background-color 160ms ease;
+}
+
+.header a span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.header a:hover,
+.header a:focus-visible {
+  border-color: rgba(255, 47, 146, 0.5);
+  background: rgba(16, 10, 18, 0.94);
+  color: #fff;
 }
 
 .scroller {
@@ -190,6 +220,22 @@
   box-shadow: 0 0 10px color-mix(in srgb, var(--story-color) 70%, transparent);
 }
 
+.liveChip {
+  position: absolute;
+  top: -3px;
+  right: -12px;
+  z-index: 3;
+  padding: 3px 7px;
+  border-radius: 4px;
+  background: var(--magenta);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  box-shadow: 0 0 14px rgba(255, 47, 146, 0.55);
+}
+
 .storyTitle,
 .storyMeta {
   overflow: hidden;
@@ -236,7 +282,7 @@
     grid-template-columns: 1fr;
     gap: 14px;
     min-height: 0;
-    padding: 0 20px 22px;
+    padding: 0 20px 24px;
     border-top: 0;
     border-bottom-color: rgba(255, 47, 146, 0.12);
     background: #030306;
@@ -255,16 +301,30 @@
   }
 
   .header a {
+    position: static;
     display: inline-flex;
+    width: auto;
+    height: auto;
     align-items: center;
     gap: 9px;
+    border: 0;
+    background: transparent;
     color: rgba(244, 240, 255, 0.78);
     font-family: var(--font-mono);
     font-size: 0.72rem;
     font-weight: 800;
     letter-spacing: 0.09em;
     text-decoration: none;
+    transform: none;
     white-space: nowrap;
+  }
+
+  .header a span {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
   }
 
   .scroller {

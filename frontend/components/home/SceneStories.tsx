@@ -62,8 +62,8 @@ export function SceneStories() {
           <h2 id="scene-stories-heading">STORIES &amp; SIGNALS</h2>
           <p>Live moments from the network</p>
         </div>
-        <a href="#signals">
-          VIEW ALL <ArrowRight size={15} aria-hidden="true" />
+        <a href="#signals" aria-label="View all stories">
+          <span>VIEW ALL</span> <ArrowRight size={15} aria-hidden="true" />
         </a>
       </header>
 
@@ -82,6 +82,7 @@ export function SceneStories() {
                 <Image src={story.image} alt="" fill sizes="72px" />
               </span>
               <span className={styles.statusDot} />
+              {index === 0 ? <span className={styles.liveChip}>LIVE</span> : null}
             </span>
             <strong className={styles.storyTitle}>{story.title}</strong>
             <span className={styles.storyMeta}>{story.meta}</span>

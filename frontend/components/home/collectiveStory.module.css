@@ -2,7 +2,6 @@
   position: relative;
   display: grid;
   min-height: 250px;
-  grid-template-rows: auto 1fr auto;
   overflow: hidden;
   border-top: 1px solid rgba(255, 47, 146, 0.16);
   border-right: 1px solid rgba(255, 47, 146, 0.14);
@@ -12,10 +11,33 @@
     #07070d;
 }
 
+.panel::before {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 47, 146, 0.12), transparent 12rem),
+    linear-gradient(rgba(255, 47, 146, 0.018) 1px, transparent 1px);
+  background-size: auto, 24px 24px;
+}
+
+.sectionHead {
+  display: none;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  min-width: 0;
+}
+
 .storyVisual {
   position: absolute;
   inset: 0;
-  opacity: 0.46;
+  overflow: hidden;
+  opacity: 0.4;
   pointer-events: none;
 }
 
@@ -25,199 +47,274 @@
   filter: saturate(0.8) contrast(1.18) brightness(0.42);
 }
 
-.storyVisual::after,
-.panel::before {
+.storyVisual::after {
   position: absolute;
   inset: 0;
   content: "";
-}
-
-.storyVisual::after {
   background:
-    linear-gradient(90deg, #07070d 0%, rgba(7, 7, 13, 0.76) 54%, rgba(7, 7, 13, 0.92)),
+    linear-gradient(90deg, #07070d 0%, rgba(7, 7, 13, 0.78) 54%, rgba(7, 7, 13, 0.94)),
     radial-gradient(circle at 78% 62%, rgba(255, 47, 146, 0.2), transparent 12rem);
 }
 
-.panel::before {
-  z-index: 1;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(255, 47, 146, 0.12), transparent 12rem),
-    linear-gradient(rgba(255, 47, 146, 0.018) 1px, transparent 1px);
-  background-size: auto, 24px 24px;
+.liveBadge {
+  display: none;
 }
 
 .copy {
   position: relative;
   z-index: 2;
   display: grid;
-  gap: 8px;
-  padding: 18px 20px 10px;
+  gap: 7px;
+  align-content: start;
+  padding: 16px 18px;
 }
 
-.copy p,
-.copy a {
+.panelLabel {
   color: var(--magenta);
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.mobileLabel {
-  display: none;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 6px;
 }
 
 .copy h2 {
   color: #f7f4ee;
-  font-size: 0.94rem;
+  font-size: 0.98rem;
   font-weight: 900;
   line-height: 1.18;
 }
 
-.copy span:not(.desktopLabel):not(.mobileLabel) {
+.subtitle {
   color: rgba(244, 240, 255, 0.68);
   font-size: 0.78rem;
 }
 
-.copy a {
-  display: none;
-  width: fit-content;
-  align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-  text-decoration: none;
-}
-
-.miniCard {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: end;
-  gap: 12px;
-  padding: 0 20px 18px;
-}
-
-.symbol {
-  display: none;
-}
-
-.miniCard div {
-  display: grid;
-  gap: 7px;
-  min-width: 0;
-}
-
-.miniCard strong,
-.miniCard small {
-  color: rgba(244, 240, 255, 0.72);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.miniCard small {
-  justify-self: end;
-}
-
 .waveform {
   display: flex;
-  height: 54px;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
+  height: 58px;
+  margin-top: 10px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .waveform i {
+  flex: 0 0 auto;
   display: block;
   width: 2px;
-  height: calc(12px + (var(--bar) % 5) * 7px);
+  height: var(--bar-height, 18px);
   border-radius: 999px;
   background: linear-gradient(180deg, #ff72b7, var(--magenta));
   box-shadow: 0 0 10px rgba(255, 47, 146, 0.32);
   transform-origin: center;
+  animation: signalBar 1.8s ease-in-out calc(var(--bar-index, 0) * 70ms) infinite;
 }
 
-.miniCard button {
-  display: none;
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+.openCall {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 16px;
+  border: 1px solid rgba(255, 47, 146, 0.55);
+  border-radius: 4px;
+  color: var(--magenta);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.openCall:hover,
+.openCall:focus-visible {
+  border-color: rgba(255, 47, 146, 0.78);
+  background: rgba(255, 47, 146, 0.08);
+  color: #ff72b7;
+}
+
+.listeners {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  overflow: hidden;
+  color: rgba(244, 240, 255, 0.72);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.metaRow small {
+  margin-left: auto;
+  color: rgba(244, 240, 255, 0.72);
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+@keyframes signalBar {
+  0%,
+  100% {
+    transform: scaleY(0.68);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
 }
 
 @media (max-width: 1023px) {
   .panel {
-    display: grid;
     min-height: 0;
-    margin-top: 18px;
-    border: 1px solid rgba(255, 47, 146, 0.18);
+    margin-top: 26px;
+    overflow: visible;
+    border: 0;
+    background: none;
+  }
+
+  .panel::before {
+    display: none;
+  }
+
+  .sectionHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 14px;
+  }
+
+  .sectionHead p {
+    color: #f7f4ee;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .sectionHead p::before {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 999px;
+    background: var(--magenta);
+    box-shadow: 0 0 12px rgba(255, 47, 146, 0.7);
+    content: "";
+    vertical-align: 1px;
+  }
+
+  .sectionHead a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(244, 240, 255, 0.78);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .card {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 47, 146, 0.22);
     border-radius: 20px;
     background:
-      radial-gradient(circle at 88% 20%, rgba(255, 47, 146, 0.18), transparent 12rem),
+      radial-gradient(circle at 88% 12%, rgba(255, 47, 146, 0.16), transparent 11rem),
       #07070d;
   }
 
   .storyVisual {
-    inset: 18px auto 18px 18px;
-    width: 132px;
+    position: relative;
+    inset: auto;
+    align-self: center;
+    width: 96px;
+    height: 116px;
     border-radius: 14px;
     opacity: 1;
-    overflow: hidden;
   }
 
   .storyVisual::after {
     background:
-      radial-gradient(circle at 42% 72%, rgba(255, 47, 146, 0.42), transparent 62%),
-      linear-gradient(180deg, transparent, rgba(3, 3, 6, 0.24));
+      radial-gradient(circle at 42% 78%, rgba(255, 47, 146, 0.4), transparent 64%),
+      linear-gradient(180deg, transparent, rgba(3, 3, 6, 0.3));
   }
 
-  .copy {
-    min-height: 172px;
-    padding: 18px 18px 14px 164px;
-  }
-
-  .desktopLabel {
-    display: none;
-  }
-
-  .mobileLabel {
-    display: inline;
-  }
-
-  .copy h2 {
-    font-size: 1.14rem;
-  }
-
-  .copy span:not(.desktopLabel):not(.mobileLabel) {
-    font-size: 0.86rem;
-  }
-
-  .copy a {
-    display: inline-flex;
-  }
-
-  .miniCard {
-    grid-template-columns: 132px minmax(0, 1fr);
-    align-items: center;
-    padding: 0 18px 18px;
-  }
-
-  .symbol {
-    position: relative;
+  .liveBadge {
+    position: absolute;
+    left: 8px;
+    bottom: 8px;
     z-index: 2;
     display: inline-flex;
-    width: fit-content;
-    align-self: end;
-    margin: 0 0 10px 14px;
-    padding: 6px 10px;
+    padding: 4px 8px;
     border-radius: 4px;
     background: var(--magenta);
     color: #fff;
-    font-size: 0.72rem;
+    font-size: 0.64rem;
     font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+
+  .copy {
+    gap: 5px;
+    padding: 0;
+  }
+
+  .panelLabel {
+    display: none;
+  }
+
+  .copy h2 {
+    font-size: 1.02rem;
+    white-space: nowrap;
+  }
+
+  .subtitle {
+    font-size: 0.84rem;
   }
 
   .waveform {
-    height: 36px;
+    height: 42px;
+    margin-top: 8px;
+  }
+
+  .metaRow {
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .openCall {
+    order: 2;
+    margin-left: auto;
+  }
+
+  .listeners {
+    order: 1;
+  }
+
+  .metaRow small {
+    display: none;
   }
 }

@@ -132,6 +132,12 @@
   background: linear-gradient(135deg, rgba(255, 47, 146, 0.26), rgba(3, 3, 6, 0.2));
 }
 
+@media (max-width: 1680px) {
+  .header a {
+    display: none;
+  }
+}
+
 @media (max-width: 1023px) {
   .panel {
     min-height: 0;
