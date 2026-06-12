@@ -89,6 +89,12 @@ export function FeaturedArtists({ artists: apiArtists }: FeaturedArtistsProps) {
           </a>
         ))}
       </div>
+      <div className={styles.dots} aria-hidden="true">
+        <i className={styles.dotActive} />
+        <i />
+        <i />
+        <i />
+      </div>
     </section>
   );
 }

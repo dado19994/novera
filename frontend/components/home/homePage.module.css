@@ -54,7 +54,7 @@
 
 .lowerGrid {
   display: grid;
-  grid-template-columns: 1.08fr 1fr 0.92fr 0.92fr 1fr;
+  grid-template-columns: repeat(12, 1fr);
   min-height: 250px;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 47, 146, 0.16);
@@ -64,13 +64,41 @@
   min-width: 0;
 }
 
+/* Asymmetric dashboard: artists 3 / audio 4 / tonight 5, then activity 6 / nearby 6. */
+.lowerGrid > :nth-child(1) {
+  grid-column: span 3;
+}
+
+.lowerGrid > :nth-child(2) {
+  grid-column: span 4;
+}
+
+.lowerGrid > :nth-child(3) {
+  grid-column: span 5;
+}
+
+.lowerGrid > :nth-child(4),
+.lowerGrid > :nth-child(5) {
+  grid-column: span 6;
+}
+
+/* Narrow desktop: two panels per row, nearby strip full width. */
+@media (max-width: 1180px) and (min-width: 1024px) {
+  .lowerGrid > :nth-child(1),
+  .lowerGrid > :nth-child(2),
+  .lowerGrid > :nth-child(3),
+  .lowerGrid > :nth-child(4) {
+    grid-column: span 6;
+  }
+
+  .lowerGrid > :nth-child(5) {
+    grid-column: span 12;
+  }
+}
+
 @media (max-width: 1280px) {
   .topBand {
     grid-template-columns: minmax(390px, 38%) minmax(0, 62%);
-  }
-
-  .lowerGrid {
-    grid-template-columns: 1fr 1.15fr;
   }
 }
 

@@ -117,7 +117,8 @@
 
 @media (min-width: 1024px) {
   .pill {
-    margin-top: 14px;
+    max-width: min(100%, 462px);
+    margin-top: 16px;
   }
 }
 

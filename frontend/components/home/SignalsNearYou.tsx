@@ -26,18 +26,21 @@ export function SignalsNearYou() {
       </header>
 
       <div className={styles.card}>
-        <strong>Near San Lorenzo</strong>
-        <span>3 live signals happening now</span>
-        <div className={styles.thumbs}>
-          {nearbySignals.map((signal) => (
-            <span className={styles.thumb} key={signal.title} title={signal.title}>
-              <Image src={signal.image} alt="" fill sizes="44px" />
-            </span>
-          ))}
-          <span className={styles.radar} aria-hidden="true">
-            <i />
-          </span>
+        <div className={styles.cardCopy}>
+          <strong>Near San Lorenzo</strong>
+          <span>3 live signals happening now</span>
+          <div className={styles.thumbs}>
+            {nearbySignals.map((signal) => (
+              <span className={styles.thumb} key={signal.title} title={signal.title}>
+                <Image src={signal.image} alt="" fill sizes="44px" />
+              </span>
+            ))}
+          </div>
         </div>
+        <span className={styles.radar} aria-hidden="true">
+          <b className={styles.sweep} />
+          <i />
+        </span>
       </div>
 
       <a className={styles.explore} href="#map">

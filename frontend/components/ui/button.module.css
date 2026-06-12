@@ -1,7 +1,7 @@
 .button {
   position: relative;
   display: inline-flex;
-  min-height: 49px;
+  min-height: 54px;
   align-items: center;
   justify-content: center;
   gap: 12px;
@@ -9,9 +9,9 @@
   border-radius: 0;
   color: var(--text);
   font-family: var(--font-ui);
-  font-size: 0.86rem;
+  font-size: 0.9rem;
   font-weight: 900;
-  letter-spacing: 0.035em;
+  letter-spacing: 0.04em;
   text-decoration: none;
   text-transform: uppercase;
   white-space: nowrap;
@@ -29,39 +29,59 @@
 }
 
 .primary {
-  min-width: 238px;
-  border: 1px solid var(--magenta-hot);
+  min-width: 196px;
+  justify-content: space-between;
+  padding: 0 16px 0 22px;
+  border: 1px solid rgba(255, 122, 178, 0.6);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18), transparent 44%),
-    linear-gradient(135deg, var(--magenta-hot), var(--magenta) 72%, var(--magenta-deep));
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.03) 40%, transparent 56%),
+    linear-gradient(118deg, #ff4ea1, var(--magenta-hot) 36%, var(--magenta) 68%, var(--magenta-deep));
   box-shadow:
-    inset 0 -3px 0 rgba(3, 3, 6, 0.34),
-    0 12px 22px rgba(255, 47, 146, 0.18);
-  color: #09030a;
-  clip-path: polygon(7% 0, 100% 0, 94% 100%, 0 100%);
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -3px 0 rgba(3, 3, 6, 0.36),
+    0 10px 26px rgba(255, 47, 146, 0.26),
+    0 2px 8px rgba(255, 15, 123, 0.28);
+  color: #0a0309;
+  clip-path: polygon(6% 0, 100% 0, 94.5% 100%, 0 100%);
   font-weight: 900;
 }
 
 .primary::before {
   position: absolute;
-  inset: 4px;
-  border: 1px solid rgba(3, 3, 6, 0.28);
+  inset: 5px;
+  border: 1px solid rgba(3, 3, 6, 0.3);
   content: "";
   pointer-events: none;
   clip-path: inherit;
 }
 
+.primary::after {
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  right: 42px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34), rgba(3, 3, 6, 0.4));
+  content: "";
+  pointer-events: none;
+}
+
 .primary:hover,
 .primary:focus-visible {
-  filter: brightness(1.08);
+  filter: brightness(1.07);
   box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.44),
     inset 0 -3px 0 rgba(3, 3, 6, 0.42),
-    0 14px 26px rgba(255, 47, 146, 0.24);
+    0 14px 32px rgba(255, 47, 146, 0.34),
+    0 3px 10px rgba(255, 15, 123, 0.34);
   transform: translateY(-1px);
 }
 
 .primary:active {
-  filter: brightness(0.98);
+  filter: brightness(0.97);
+  box-shadow:
+    inset 0 2px 4px rgba(3, 3, 6, 0.3),
+    0 6px 16px rgba(255, 47, 146, 0.22);
   transform: translateY(0);
 }
 

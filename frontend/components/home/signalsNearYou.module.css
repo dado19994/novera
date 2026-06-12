@@ -44,11 +44,14 @@
 }
 
 .card {
+  position: relative;
   display: grid;
-  gap: 4px;
-  align-content: start;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
   margin: 2px 18px 0;
-  padding: 14px;
+  padding: 16px;
+  overflow: hidden;
   border: 1px solid rgba(255, 47, 146, 0.2);
   border-radius: 14px;
   background:
@@ -56,16 +59,35 @@
     rgba(7, 7, 13, 0.92);
 }
 
-.card strong {
+.cardCopy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.card::after {
+  position: absolute;
+  right: -34px;
+  bottom: -44px;
+  width: 150px;
+  height: 150px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 47, 146, 0.15), transparent 66%);
+  content: "";
+  pointer-events: none;
+  animation: nearbyAmbient 3.4s ease-in-out infinite;
+}
+
+.cardCopy strong {
   color: #f7f4ee;
   font-family: var(--font-ui);
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 900;
 }
 
-.card > span {
+.cardCopy > span {
   color: rgba(244, 240, 255, 0.66);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
 }
 
 .thumbs {
@@ -102,18 +124,28 @@
 .radar {
   position: relative;
   display: grid;
-  width: 44px;
-  height: 44px;
-  margin-left: auto;
+  width: 88px;
+  height: 88px;
   place-items: center;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 47, 146, 0.24), transparent 72%);
+  border: 1px solid rgba(255, 47, 146, 0.22);
+  background:
+    radial-gradient(circle, rgba(255, 47, 146, 0.26), transparent 70%),
+    repeating-radial-gradient(circle, transparent 0 13px, rgba(255, 47, 146, 0.12) 13.5px 14px);
+}
+
+.sweep {
+  position: absolute;
+  inset: 3px;
+  border-radius: 999px;
+  background: conic-gradient(from 0deg, transparent 0 70%, rgba(255, 47, 146, 0.45) 88%, transparent 100%);
+  animation: radarSweep 3.6s linear infinite;
 }
 
 .radar::before,
 .radar::after {
   position: absolute;
-  inset: 5px;
+  inset: 9px;
   border: 1px solid rgba(255, 47, 146, 0.55);
   border-radius: 999px;
   content: "";
@@ -125,11 +157,11 @@
 }
 
 .radar i {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 999px;
   background: var(--magenta-hot);
-  box-shadow: 0 0 14px rgba(255, 47, 146, 0.8);
+  box-shadow: 0 0 16px rgba(255, 47, 146, 0.85);
 }
 
 .explore {
@@ -137,12 +169,13 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  min-height: 40px;
+  min-height: 42px;
   margin: 14px 18px 16px;
   padding: 0 16px;
-  border: 1px solid rgba(255, 47, 146, 0.5);
+  border: 1px solid rgba(255, 47, 146, 0.6);
   border-radius: 999px;
-  color: var(--magenta);
+  background: rgba(255, 47, 146, 0.08);
+  color: #ff9ac4;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
@@ -223,5 +256,22 @@
   100% {
     opacity: 0;
     transform: scale(1.5);
+  }
+}
+
+@keyframes radarSweep {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes nearbyAmbient {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
   }
 }
