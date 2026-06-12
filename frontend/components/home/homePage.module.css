@@ -14,7 +14,7 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(420px, 34.5%) minmax(0, 65.5%);
-  grid-template-rows: minmax(454px, auto) auto;
+  grid-template-rows: minmax(496px, auto) auto;
   min-height: 0;
   overflow: hidden;
   border-bottom: 1px solid rgba(255, 47, 146, 0.2);
@@ -101,20 +101,38 @@
   }
 
   .lowerGrid {
-    display: block;
+    display: flex;
     width: 100%;
     max-width: 100%;
-    padding: 0 16px 30px;
+    flex-direction: column;
+    padding: 0 20px 34px;
     overflow: hidden;
     border-bottom: 0;
     background: #030306;
   }
 
-  .lowerGrid > * {
-    display: none;
+  /* Mobile flow: live now, artists, tonight, open calls, activity, nearby. */
+  .lowerGrid > :nth-child(1) {
+    order: 2;
   }
 
-  .lowerGrid > *:nth-child(2) {
-    display: grid;
+  .lowerGrid > :nth-child(2) {
+    order: 1;
+  }
+
+  .lowerGrid > :nth-child(3) {
+    order: 3;
+  }
+
+  .lowerGrid > :nth-child(4) {
+    order: 5;
+  }
+
+  .lowerGrid > :nth-child(5) {
+    order: 6;
+  }
+
+  .lowerGrid > :nth-child(6) {
+    order: 4;
   }
 }

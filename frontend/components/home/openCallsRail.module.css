@@ -1,0 +1,137 @@
+.panel {
+  display: none;
+}
+
+.magenta {
+  --call-color: var(--magenta);
+}
+
+.violet {
+  --call-color: var(--violet-soft);
+}
+
+.cyan {
+  --call-color: var(--teal);
+}
+
+@media (max-width: 1023px) {
+  .panel {
+    display: grid;
+    margin-top: 28px;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 0 14px;
+  }
+
+  .header p {
+    color: #f7f4ee;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+  }
+
+  .header p::before {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 999px;
+    background: var(--magenta);
+    box-shadow: 0 0 12px rgba(255, 47, 146, 0.7);
+    content: "";
+    vertical-align: 1px;
+  }
+
+  .header a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(244, 240, 255, 0.78);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .list {
+    display: grid;
+    gap: 10px;
+  }
+
+  .call {
+    display: grid;
+    grid-template-columns: 8px minmax(0, 1fr) auto 16px;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    padding: 10px 14px;
+    border: 1px solid rgba(255, 47, 146, 0.16);
+    border-radius: 16px;
+    background:
+      linear-gradient(90deg, color-mix(in srgb, var(--call-color) 7%, transparent), transparent 46%),
+      #07070d;
+    color: var(--text);
+    text-decoration: none;
+    transition: border-color 160ms ease, background-color 160ms ease, transform 160ms ease;
+  }
+
+  .call:hover,
+  .call:focus-visible {
+    border-color: color-mix(in srgb, var(--call-color) 45%, transparent);
+    transform: translateX(2px);
+  }
+
+  .glyph {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--call-color);
+    box-shadow: 0 0 12px color-mix(in srgb, var(--call-color) 70%, transparent);
+  }
+
+  .copy {
+    display: grid;
+    gap: 3px;
+    min-width: 0;
+  }
+
+  .copy strong {
+    overflow: hidden;
+    color: #f7f4ee;
+    font-family: var(--font-ui);
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .copy small {
+    color: rgba(244, 240, 255, 0.62);
+    font-size: 0.72rem;
+  }
+
+  .deadline {
+    padding: 4px 8px;
+    border: 1px solid color-mix(in srgb, var(--call-color) 42%, transparent);
+    border-radius: 5px;
+    color: var(--call-color);
+    font-family: var(--font-mono);
+    font-size: 0.56rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
+
+  .call > svg {
+    color: rgba(244, 240, 255, 0.7);
+  }
+}

@@ -167,6 +167,53 @@
   transform: translateX(3px);
 }
 
+@media (max-width: 1023px) {
+  .panel {
+    min-height: 0;
+    margin-top: 28px;
+    border-top: 0;
+    border-left: 0;
+    background: none;
+  }
+
+  .header {
+    min-height: 0;
+    padding: 0 0 14px;
+  }
+
+  .header h2 {
+    color: #f7f4ee;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .header h2::before {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 999px;
+    background: var(--magenta);
+    box-shadow: 0 0 12px rgba(255, 47, 146, 0.7);
+    content: "";
+    vertical-align: 1px;
+  }
+
+  .header a {
+    font-size: 0.72rem;
+  }
+
+  .card {
+    margin: 0;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .explore {
+    margin: 14px 0 0;
+  }
+}
+
 @keyframes nearbyPulse {
   0% {
     opacity: 0.9;

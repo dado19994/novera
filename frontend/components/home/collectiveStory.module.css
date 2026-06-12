@@ -94,7 +94,7 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  height: 58px;
+  height: 64px;
   margin-top: 10px;
   min-width: 0;
   overflow: hidden;
@@ -103,11 +103,11 @@
 .waveform i {
   flex: 0 0 auto;
   display: block;
-  width: 2px;
+  width: 2.5px;
   height: var(--bar-height, 18px);
   border-radius: 999px;
   background: linear-gradient(180deg, #ff72b7, var(--magenta));
-  box-shadow: 0 0 10px rgba(255, 47, 146, 0.32);
+  box-shadow: 0 0 12px rgba(255, 47, 146, 0.45);
   transform-origin: center;
   animation: signalBar 1.8s ease-in-out calc(var(--bar-index, 0) * 70ms) infinite;
 }
@@ -150,12 +150,34 @@
   gap: 7px;
   min-width: 0;
   overflow: hidden;
-  color: rgba(244, 240, 255, 0.72);
+  color: #f7f4ee;
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   white-space: nowrap;
+}
+
+.listeners::before {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--magenta-hot);
+  box-shadow: 0 0 12px rgba(255, 47, 146, 0.75);
+  content: "";
+  animation: listenerPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes listenerPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 .metaRow small {
@@ -295,7 +317,7 @@
   }
 
   .waveform {
-    height: 42px;
+    height: 46px;
     margin-top: 8px;
   }
 

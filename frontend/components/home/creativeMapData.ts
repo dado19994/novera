@@ -349,4 +349,46 @@ export const mapRoutes: MapRoute[] = [
     category: "collectives",
     path: "M352 220 C372 252 386 286 392 320 C396 344 396 368 390 390",
   },
+  {
+    id: "route-centro-collectives-orbit",
+    districtId: "centro",
+    category: "collectives",
+    path: "M320 178 C294 156 278 128 274 96 C272 80 276 64 286 50",
+  },
+  {
+    id: "route-centro-artists-orbit",
+    districtId: "centro",
+    category: "artists",
+    path: "M362 212 C396 222 426 240 446 266 C458 282 464 300 462 320",
+  },
+  {
+    id: "route-san-lorenzo-spaces-fine",
+    districtId: "san-lorenzo",
+    category: "spaces",
+    path: "M344 174 C338 140 326 110 304 86 C292 73 276 64 258 58",
+  },
+  {
+    id: "route-pigneto-artists",
+    districtId: "pigneto",
+    category: "artists",
+    path: "M366 212 C414 212 460 204 502 186 C534 172 562 152 584 128",
+  },
+  {
+    id: "route-ostiense-events",
+    districtId: "ostiense",
+    category: "events",
+    path: "M326 206 C276 206 222 200 172 190 C140 184 108 180 76 180",
+  },
+  {
+    id: "route-trastevere-collectives",
+    districtId: "trastevere",
+    category: "collectives",
+    path: "M332 222 C290 240 252 264 220 292 C202 308 186 326 174 344",
+  },
+  {
+    id: "route-garbatella-spaces",
+    districtId: "garbatella",
+    category: "spaces",
+    path: "M348 222 C362 256 372 292 376 326 C378 348 376 372 368 394",
+  },
 ];

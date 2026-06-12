@@ -4,6 +4,7 @@ import { CollectiveStory } from "./CollectiveStory";
 import { CreativeMapPanel } from "./CreativeMapPanel";
 import { FeaturedArtists } from "./FeaturedArtists";
 import { HeroPanel } from "./HeroPanel";
+import { OpenCallsRail } from "./OpenCallsRail";
 import { SceneStories } from "./SceneStories";
 import { SignalsNearYou } from "./SignalsNearYou";
 import { UpcomingEvents } from "./UpcomingEvents";
@@ -37,6 +38,7 @@ export function HomePage({ data }: HomePageProps) {
         <UpcomingEvents events={featuredEvents} />
         <ActivityRail activities={activities} />
         <SignalsNearYou />
+        <OpenCallsRail />
       </section>
     </div>
   );

@@ -4,7 +4,7 @@
   --cat-events: #ffb23f;
   --cat-spaces: #8b5cff;
   position: relative;
-  min-height: 454px;
+  min-height: 496px;
   overflow: hidden;
   background:
     radial-gradient(circle at 48% 38%, rgba(255, 15, 123, 0.56), transparent 10rem),
@@ -476,7 +476,7 @@
 @media (max-width: 1023px) {
   .panel {
     min-height: 0;
-    margin: 26px 16px 0;
+    margin: 26px 20px 0;
     padding: 0 0 14px;
     overflow: hidden;
     border: 1px solid rgba(255, 47, 146, 0.22);

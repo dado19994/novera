@@ -31,6 +31,10 @@ const ambientRoutes = [
   "M386 232 C376 258 356 276 328 284",
   "M296 232 C282 214 278 192 286 170",
   "M352 250 C384 246 410 230 424 204",
+  "M312 148 C338 130 370 124 400 132",
+  "M268 200 C262 226 270 252 290 272",
+  "M398 168 C420 184 432 208 430 234",
+  "M330 268 C356 280 386 282 414 272",
 ];
 
 const ambientNodes = [
@@ -54,6 +58,14 @@ const ambientNodes = [
   { x: 23, y: 28, tone: "spaces" },
   { x: 38, y: 48, tone: "collectives" },
   { x: 47, y: 64, tone: "artists" },
+  { x: 42, y: 28, tone: "events" },
+  { x: 49, y: 27, tone: "artists" },
+  { x: 53, y: 36, tone: "collectives" },
+  { x: 45, y: 49, tone: "spaces" },
+  { x: 41, y: 38, tone: "artists" },
+  { x: 59, y: 33, tone: "events" },
+  { x: 33, y: 42, tone: "collectives" },
+  { x: 51, y: 53, tone: "spaces" },
 ];
 
 function getDistrictToneClass(tone: MapDistrict["tone"]) {

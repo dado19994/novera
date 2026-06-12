@@ -141,9 +141,42 @@
 @media (max-width: 1023px) {
   .panel {
     min-height: 0;
-    border-top-color: rgba(255, 47, 146, 0.14);
+    margin-top: 28px;
+    border-top: 0;
     border-right: 0;
-    background: #030306;
+    background: none;
+  }
+
+  .header {
+    min-height: 0;
+    padding: 0 0 14px;
+  }
+
+  .header h2 {
+    color: #f7f4ee;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+  }
+
+  .header h2::before {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 999px;
+    background: var(--magenta);
+    box-shadow: 0 0 12px rgba(255, 47, 146, 0.7);
+    content: "";
+    vertical-align: 1px;
+  }
+
+  .header a {
+    display: inline-flex;
+    font-size: 0.72rem;
+  }
+
+  .list {
+    padding: 0;
   }
 
   .event {
